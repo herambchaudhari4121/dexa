@@ -1,6 +1,5 @@
 const Fuse = require('fuse.js'),
   path = require('path'),
-  {ItemAliases} = require(path.join(__dirname, '../data/aliases')),
   {BattleItems} = require(path.join(__dirname, '../data/items')),
   {capitalizeFirstLetter} = require(path.join(__dirname, '../util')),
   {oneLine} = require('common-tags');
@@ -18,10 +17,8 @@ const item = function (req, res) {
         minMatchCharLength: 1,
         keys: ['alias', 'item', 'id', 'name']
       },
-      aliasFuse = new Fuse(ItemAliases, fsoptions),
       itemFuse = new Fuse(BattleItems, fsoptions),
-      aliasSearch = aliasFuse.search(itemInput),
-      itemSearch = aliasSearch.length ? itemFuse.search(aliasSearch[0].item) : itemFuse.search(itemInput);
+      itemSearch = itemFuse.search(itemInput);
 
     const itemData = {
       name: capitalizeFirstLetter(itemSearch[0].name),

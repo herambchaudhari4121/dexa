@@ -2,7 +2,10 @@ const alexa = require('alexa-app'),
   app = new alexa.app('dexa'),
   path = require('path'),
   {dex} = require(path.join(__dirname, 'intents/dexintent')),
-  {item} = require(path.join(__dirname, 'intents/itemintent'));
+  {item} = require(path.join(__dirname, 'intents/itemintent')),
+  {ability} = require(path.join(__dirname, 'intents/itemintent')),
+  {move} = require(path.join(__dirname, 'intents/itemintent')),
+  {type} = require(path.join(__dirname, 'intents/itemintent'));
 
 app.launch((req, res) => {
   res.say('Dexa is ready for browsing!');
@@ -43,6 +46,27 @@ app.intent('ItemIntent', {
   utterances: ['item {-|ITEM}']
 }, (req, res) => {
   item(req, res);
+});
+
+app.intent('AbilityIntent', {
+  slots: {ABILITY: 'ABILITY'},
+  utterances: ['ability {-|ABILITY}']
+}, (req, res) => {
+  ability(req, res);
+});
+
+app.intent('MoveIntent', {
+  slots: {MOVE: 'MOVE'},
+  utterances: ['move {-|MOVE}']
+}, (req, res) => {
+  move(req, res);
+});
+
+app.intent('TypeIntent', {
+  slots: {TYPE: 'TYPE'},
+  utterances: ['type {-|TYPE}']
+}, (req, res) => {
+  type(req, res);
 });
 
 module.exports = app;
