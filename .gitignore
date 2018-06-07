@@ -1,0 +1,11 @@
+# Node modules need to be installed through yarn
+node_modules/
+
+# Environment variables
+.env
+
+# Any logs created
+*.log
+
+# VSCode settings
+.vscode/
