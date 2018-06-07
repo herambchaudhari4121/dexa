@@ -1,3 +1,3 @@
-const dexa = require('dexa')
+const dexa = require('dexa');
 
 exports.handle = dexa.lambda();
