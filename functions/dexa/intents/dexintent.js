@@ -1,13 +1,13 @@
 const Fuse = require('fuse.js'),
   path = require('path'),
   dexEntries = require(path.join(__dirname, '../data/flavorText.json')),
+  {PokeAliases} = require(path.join(__dirname, '../data/aliases')),
   {BattlePokedex} = require(path.join(__dirname, '../data/pokedex')),
   {capitalizeFirstLetter, removeDiacritics} = require(path.join(__dirname, '../util')),
   {oneLine} = require('common-tags');
 
-const dex = function (req, res) {
+const dexIntent = function (req, res) {
   try {
-    console.log(req.slots);
     let pokemon = removeDiacritics(req.slot('POKEMON'));
 
     if (pokemon.split(' ')[0] === 'mega') {
@@ -15,7 +15,16 @@ const dex = function (req, res) {
     }
 
     /* eslint-disable sort-vars */
-    const pokeoptions = {
+    const aliasoptions = {
+        shouldSort: true,
+        threshold: 0.2,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: ['alias']
+      },
+      pokeoptions = {
         shouldSort: true,
         threshold: 0.3,
         location: 0,
@@ -24,8 +33,11 @@ const dex = function (req, res) {
         minMatchCharLength: 1,
         keys: ['num', 'species']
       },
+      aliasFuse = new Fuse(PokeAliases, aliasoptions),
       pokeFuse = new Fuse(BattlePokedex, pokeoptions),
-      pokeSearch = pokeFuse.search(pokemon);
+      firstSearch = pokeFuse.search(pokemon),
+      aliasSearch = !firstSearch.length ? aliasFuse.search(pokemon) : null,
+      pokeSearch = !firstSearch.length && aliasSearch.length ? pokeFuse.search(aliasSearch[0].name) : firstSearch;
     /* eslint-enable sort-vars */
 
     const pokeData = {
@@ -106,4 +118,4 @@ const dex = function (req, res) {
   }
 };
 
-module.exports = {dex};
+module.exports = {dexIntent};

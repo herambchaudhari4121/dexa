@@ -1,8 +1,8 @@
 const alexa = require('alexa-app'),
   app = new alexa.app('dexa'),
   path = require('path'),
-  {dex} = require(path.join(__dirname, 'intents/dexintent')),
-  {item} = require(path.join(__dirname, 'intents/itemintent')),
+  {dexIntent} = require(path.join(__dirname, 'intents/dexintent')),
+  {itemIntent} = require(path.join(__dirname, 'intents/itemintent')),
   {ability} = require(path.join(__dirname, 'intents/itemintent')),
   {move} = require(path.join(__dirname, 'intents/itemintent')),
   {type} = require(path.join(__dirname, 'intents/itemintent'));
@@ -38,14 +38,14 @@ app.intent('DexIntent', {
   slots: {POKEMON: 'POKEMON'},
   utterances: ['data on {-|POKEMON}', 'pokemon {-|POKEMON}', 'about {-|POKEMON}']
 }, (req, res) => {
-  dex(req, res);
+  dexIntent(req, res);
 });
 
 app.intent('ItemIntent', {
   slots: {ITEM: 'ITEM'},
   utterances: ['item {-|ITEM}']
 }, (req, res) => {
-  item(req, res);
+  itemIntent(req, res);
 });
 
 app.intent('AbilityIntent', {
