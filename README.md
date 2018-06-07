@@ -2,7 +2,7 @@
 
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3.0-orange.svg?style=for-the-badge)](https://bitbucket.org/Favna/dexa/src/master/LICENSE.md)[![Twitter Follow](https://img.shields.io/twitter/follow/favna_.svg?style=for-the-badge&label=Follow)](https://twitter.com/favna_)[![PayPal Donate](https://img.shields.io/badge/Donate-PayPal-547ab8.svg?style=for-the-badge)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)[![Become a Patron](https://i.imgur.com/05PzBRU.png)](https://www.patreon.com/bePatron?u=9336537)
 
-[![Support Server](https://canary.discordapp.com/api/guilds/246821351585742851/widget.png?style=banner2)](https://discord.gg/zdt5yQt)
+[![Support Server](https://discordapp.com/api/guilds/246821351585742851/widget.png?style=banner2)](https://discord.gg/zdt5yQt)
 
 
 
