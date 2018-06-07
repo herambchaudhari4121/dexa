@@ -1,4 +1,4 @@
-const dexa = require('dexa');
+const dexa = require('./dexa');
 
 console.log('Intent Schema:');
 console.log();

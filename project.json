@@ -1,7 +1,0 @@
-{
-    "name": "alexa",
-    "description": "Simple Pokedex skill for Alexa",
-    "memory": 128,
-    "timeout": 5,
-    "role": ""
-}

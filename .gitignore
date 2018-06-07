@@ -9,3 +9,6 @@ node_modules/
 
 # VSCode settings
 .vscode/
+
+# Apex Settings File
+project.json
