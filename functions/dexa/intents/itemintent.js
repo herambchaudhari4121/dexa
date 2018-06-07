@@ -6,6 +6,7 @@ const Fuse = require('fuse.js'),
 
 const item = function (req, res) {
   try {
+    console.log(req.slots);
     const itemInput = req.slot('ITEM');
 
     const fsoptions = {
@@ -32,7 +33,7 @@ const item = function (req, res) {
 
   } catch (err) {
     console.error(err);
-    throw new Error('Pokemon not found');
+    throw new Error('Item not found');
   }
 };
 

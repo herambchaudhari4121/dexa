@@ -36,7 +36,7 @@ app.error = function (exc, req, res) {
 
 app.intent('DexIntent', {
   slots: {POKEMON: 'POKEMON'},
-  utterances: ['data on {-|POKEMON}', 'pokemon {-|POKEMON}']
+  utterances: ['data on {-|POKEMON}', 'pokemon {-|POKEMON}', 'about {-|POKEMON}']
 }, (req, res) => {
   dex(req, res);
 });

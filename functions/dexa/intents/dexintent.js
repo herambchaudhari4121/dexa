@@ -7,7 +7,7 @@ const Fuse = require('fuse.js'),
 
 const dex = function (req, res) {
   try {
-    console.log(req.slot('POKEMON'));
+    console.log(req.slots);
     let pokemon = removeDiacritics(req.slot('POKEMON'));
 
     if (pokemon.split(' ')[0] === 'mega') {
