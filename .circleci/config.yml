@@ -40,6 +40,9 @@ jobs:
           name: Install global node modules
           command: sudo npm install -g node-pre-gyp node-gyp
       - run:
+          name: Jump to correct directory
+          command: cd /home/circleci/dex/functions/dexa
+      - run:
           name: Install dexa dependencies
           command: yarn install
       - save_cache:
