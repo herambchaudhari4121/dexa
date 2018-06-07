@@ -14,13 +14,10 @@ jobs:
     working_directory: ~/dexa/functions/dexa
     steps:
       - checkout
-      - run:
-          name: Change to correct directory
-          command: cd functions/dexa
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-{{ .Branch }}-{{ checksum "functions/dexa/yarn.lock" }}
             - yarn-packages-{{ .Branch }}
             - yarn-packages-master
             - yarn-packages-
@@ -44,12 +41,12 @@ jobs:
           command: sudo npm install -g node-pre-gyp node-gyp
       - run:
           name: Install dexa dependencies
-          command: yarn install
+          command: cd functions/dexa && yarn install
       - save_cache:
           name: Save Yarn Package Cache
-          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-packages-{{ .Branch }}-{{ checksum "functions/dexa/yarn.lock" }}
           paths:
             - node_modules
       - run:
           name: Run Tests
-          command: yarn test
+          command: cd functions/dexa && yarn test
