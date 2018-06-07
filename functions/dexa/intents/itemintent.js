@@ -7,7 +7,7 @@ const Fuse = require('fuse.js'),
 
 const itemIntent = function (req, res) {
   try {
-    const itemInput = removeDiacritics(req.slot('ITEM'));
+    const item = removeDiacritics(req.slot('ITEM'));
 
     const fsoptions = {
         shouldSort: true,
@@ -20,8 +20,8 @@ const itemIntent = function (req, res) {
       },
       aliasFuse = new Fuse(ItemAliases, fsoptions),
       itemFuse = new Fuse(BattleItems, fsoptions),
-      aliasSearch = aliasFuse.search(itemInput),
-      itemSearch = aliasSearch.length ? itemFuse.search(aliasSearch[0].item) : itemFuse.search(itemInput);
+      aliasSearch = aliasFuse.search(item),
+      itemSearch = aliasSearch.length ? itemFuse.search(aliasSearch[0].item) : itemFuse.search(item);
 
     const itemData = {
       name: capitalizeFirstLetter(itemSearch[0].name),
@@ -32,7 +32,6 @@ const itemIntent = function (req, res) {
     const final = oneLine`${itemData.name}, ${itemData.description} It was introduced in generation ${itemData.gen}.`;
 
     return res.say(final);
-
   } catch (err) {
     console.error(err);
     throw new Error('Item not found');

@@ -94,4 +94,27 @@ describe('Dexa', () => {
 
       return expect(ssml).to.eql('<speak>Life orb, Holder\'s attacks do 1.3x damage, and it loses 1/10 its max HP after the attack. It was introduced in generation 4.</speak>');
     }));
+
+  it('responds to a move lookup event', () => request(server)
+    .post('/dexa')
+    .send({
+      request: {
+        type: 'IntentRequest',
+        intent: {
+          name: 'MoveIntent',
+          slots: {
+            MOVE: {
+              name: 'MOVE',
+              value: 'dragon dance'
+            }
+          }
+        }
+      }
+    })
+    .expect(200)
+    .then((response) => {
+      const {ssml} = response.body.response.outputSpeech;
+
+      return expect(ssml).to.eql('<speak>Dragon Dance, Raises the user\'s Attack and Speed by 1 stage. Dragon Dance is a Dragon type move with 20 pp. Under normal conditions it will have a priority factor of 0 and an accuracy of 100%. In battles with multiple pokemon on each side it will have an effect on Self. It is categorized as a Status type move in battles and as a Cool type move in contests.</speak>');
+    }));
 });
