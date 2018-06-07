@@ -71,4 +71,27 @@ describe('Dexa', () => {
 
       return expect(ssml).to.eql('<speak>Dragonite, number 149, You\'ll often hear tales of this kindhearted Pokémon rescuing people or Pokémon that are drowning. It is Dragon Flying type. It\'s pre-evolutions are Dragonair and Dratini. Dragonite gets the abilities Inner Focus and Multiscale and it is typically 2.2 meters tall and weighs about 210 kilograms. Dragonite appears as roughly 50% Male and 50% Female.</speak>');
     }));
+
+  it('responds to a item lookup event', () => request(server)
+    .post('/dexa')
+    .send({
+      request: {
+        type: 'IntentRequest',
+        intent: {
+          name: 'ItemIntent',
+          slots: {
+            ITEM: {
+              name: 'ITEM',
+              value: 'life orb'
+            }
+          }
+        }
+      }
+    })
+    .expect(200)
+    .then((response) => {
+      const {ssml} = response.body.response.outputSpeech;
+
+      return expect(ssml).to.eql('<speak>Life orb, Holder\'s attacks do 1.3x damage, and it loses 1/10 its max HP after the attack. It was introduced in generation 4.</speak>');
+    }));
 });
