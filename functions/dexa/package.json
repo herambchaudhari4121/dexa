@@ -1,9 +1,9 @@
 {
-  "name": "alexa-dexter",
+  "name": "dexa",
   "version": "1.0.0",
   "description": "Simple pokedex skill for Alexa",
-  "main": "functions/dexter/index.js",
-  "repository": "git@bitbucket.org:Favna/alexa-dexter.git",
+  "main": "functions/dexa/index.js",
+  "repository": "git@bitbucket.org:Favna/dexa.git",
   "author": "Jeroen Claassens <jeroen.claassens@live.nl>",
   "license": "GPL-3.0",
   "private": false,
