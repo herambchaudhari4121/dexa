@@ -1,23 +1,13 @@
-<div align="center">
+[![Dexa](https://i.imgur.com/LpV1shX.png)](https://favna.xyz/dexa)
 
-  <p>
-  <a href="https://favna.xyz/dexa"><img src="https://i.imgur.com/LpV1shX.png" height="200" alt="Dexa"/></a>
-  </p>
+[![CircleCI](https://img.shields.io/circleci/project/bb/Favna/Dexa.svg?style=for-the-badge)](https://circleci.com/bb/Favna/dexa/tree/master)[![GPLv3 license](https://img.shields.io/badge/License-GPLv3.0-orange.svg?style=for-the-badge)](https://bitbucket.org/Favna/dexa/src/master/LICENSE.md)
 
-  <p>
-<a href="https://circleci.com/bb/Favna/Dexa/tree/master"><img src="https://img.shields.io/circleci/project/bitbucket/Favna/Dexa.svg?style=for-the-badge" alt="CircleCI"></a><!--
---><a href="https://github.com/Favna/Dexa/blob/master/LICENSE.md"><img src="https://img.shields.io/bitbucket/license/favna/dexa.svg?style=for-the-badge" alt="License"></a>
-  </p>
-  <p>
-<a href="https://twitter.com/Favna_"><img src="https://img.shields.io/twitter/follow/espadrine.svg?style=for-the-badge&label=Follow" alt="Twitter Follow"></a><!--
---><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34"><img src="https://img.shields.io/badge/Donate-PayPal-547ab8.svg?style=for-the-badge" alt="donate" title="Donate with PayPal" /></a><!--
---><a href="https://www.patreon.com/bePatron?u=9336537"><img src="https://i.imgur.com/05PzBRU.png" alt="patreon badge" title="Become a Patron"></a>
-  </p>
+[![Twitter Follow](https://img.shields.io/twitter/follow/favna_.svg?style=for-the-badge&label=Follow)](https://twitter.com/favna_)[![PayPal Donate](https://img.shields.io/badge/Donate-PayPal-547ab8.svg?style=for-the-badge)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)[![Become a Patron](https://i.imgur.com/05PzBRU.png)](https://www.patreon.com/bePatron?u=9336537)
 
-  <p>
-    <a href="https://discord.gg/zdt5yQt"><img src="https://canary.discordapp.com/api/guilds/246821351585742851/widget.png?style=banner2" alt="Join Discord Server"/></a>
-  </p>
-</div>
+[![Support Server](https://canary.discordapp.com/api/guilds/246821351585742851/widget.png?style=banner2)](https://discord.gg/zdt5yQt)
+
+
+
 
 ## Dexa
 
@@ -43,9 +33,9 @@ This skill is open source and always will be, even if I don't get donations. Tha
 
 I accept donations through PayPal, BitCoin, Ethereum and LiteCoin. You can use the buttons below to donate through your method of choice
 
-|Donate With|QR|Address|
-|:---:|:---:|:---:|
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34"><img src="https://favna.xyz/images/ribbonhost/paypaldonate.png"></a>|<img src="https://favna.xyz/images/ribbonhost/paypalqr.png" width="128">|[Donate with PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)|
-<img src="https://favna.xyz/images/ribbonhost/bitcoindonate.png">|<img src="https://favna.xyz/images/ribbonhost/bitcoinqr.png" width="128">|<a href="bitcoin:1E643TNif2MTh75rugepmXuq35Tck4TnE5?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">1E643TNif2MTh75rugepmXuq35Tck4TnE5</a>|
-<img src="https://favna.xyz/images/ribbonhost/ethereumdonate.png">|<img src="https://favna.xyz/images/ribbonhost/ethereumqr.png" width="128">|<a href="ethereum:0xF653F666903cd8739030D2721bF01095896F5D6E?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">0xF653F666903cd8739030D2721bF01095896F5D6E</a>|
-<img src="https://favna.xyz/images/ribbonhost/litecoindonate.png">|<img src="https://favna.xyz/images/ribbonhost/litecoinqr.png" width="128">|<a href="litecoin:LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6</a>|
+Donate With     | QR   | Address
+:---------:| :-----: |:-----:
+[![PayPal Donate](https://favna.xyz/images/ribbonhost/paypaldonate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)  |  [![PayPal Donate](https://favna.xyz/images/ribbonhost/paypalqr.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34) | [Donate with PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)
+[![BitCoin Donate](https://favna.xyz/images/ribbonhost/bitcoindonate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)  |  [![BitCoin Donate](https://favna.xyz/images/ribbonhost/bitcoinqr.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34) | [1E643TNif2MTh75rugepmXuq35Tck4TnE5?amount=0.01&label=Favna%20Open%20Source%20Software](bitcoin:1E643TNif2MTh75rugepmXuq35Tck4TnE5?amount=0.01&label=Favna%20Open%20Source%20Software)
+[![Ethereum Donate](https://favna.xyz/images/ribbonhost/ethereumdonate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)  |  [![Ethereum Donate](https://favna.xyz/images/ribbonhost/ethereumqr.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34) | [0xF653F666903cd8739030D2721bF01095896F5D6E?amount=0.01&label=Favna%20Open%20Source%20Software](ethereum:0xF653F666903cd8739030D2721bF01095896F5D6E?amount=0.01&label=Favna%20Open%20Source%20Software)
+[![LiteCoin Donate](https://favna.xyz/images/ribbonhost/bitcoindonate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)  |  [![LiteCoin Donate](https://favna.xyz/images/ribbonhost/bitcoinqr.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34) | [LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6?amount=0.01&label=Favna%20Open%20Source%20Software](litecoin:LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6?amount=0.01&label=Favna%20Open%20Source%20Software)
