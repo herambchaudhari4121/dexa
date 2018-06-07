@@ -102,7 +102,7 @@ const dex = function (req, res) {
       }
     }
 
-    const final = oneLine`${pokeData.species}, number ${pokeData.number}, ${pokeData.flavors}.
+    const final = oneLine`${pokeData.species}, number ${pokeData.number}, ${pokeData.flavors}
     It is ${pokeData.types.join(' ')} type.
     ${pokeData.prevos.length ? `It's pre-evolutions are ${pokeData.prevos.join(' and ')}.` : ''}
     ${pokeData.evos.length ? `It evolves into ${pokeData.evos.join(' and ')}.` : ''}
