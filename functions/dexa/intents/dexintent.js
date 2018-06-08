@@ -26,7 +26,7 @@ const dexIntent = function (req, res) {
       },
       pokeoptions = {
         shouldSort: true,
-        threshold: 0.3,
+        threshold: 0.2,
         location: 0,
         distance: 100,
         maxPatternLength: 32,
