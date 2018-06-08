@@ -200,7 +200,7 @@ const typeIntent = function (req, res) {
     const final = oneLine`${displayTypes.join(' ')} is ${atkVulnDisplay[0]}, ${atkVulnDisplay[1]},
     ${atkVulnDisplay[3] ? '' : 'and'} is ${atkVulnDisplay[2]} ${atkVulnDisplay[3] ? `and ${atkVulnDisplay[3]}` : ''}.
     Furthermore, ${displayTypes.join(' ')} is ${vulnDisplay[0]},${vulnDisplay[1]},
-    ${vulnDisplay[3] ? '' : 'and'}${vulnDisplay[2]} ${vulnDisplay[3] ? `and is ${vulnDisplay[3]}` : ''}`.replace(/x([0-9]{1}(\.[0-9]){0,1})/gm, 'times $1');
+    ${vulnDisplay[3] ? '' : 'and '}${vulnDisplay[2]} ${vulnDisplay[3] ? `and is ${vulnDisplay[3]}` : ''}`.replace(/x([0-9]{1}(\.[0-9]){0,1})/gm, 'times $1');
 
     return res.say(final);
   } catch (err) {
