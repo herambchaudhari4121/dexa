@@ -140,4 +140,27 @@ describe('Dexa', () => {
 
       return expect(ssml).to.eql('<speak>Multiscale, If this Pokemon is at full HP, damage taken from attacks is halved.</speak>');
     }));
+
+  it('responds to a type lookup event', () => request(server)
+    .post('/dexa')
+    .send({
+      request: {
+        type: 'IntentRequest',
+        intent: {
+          name: 'TypeIntent',
+          slots: {
+            TYPE: {
+              name: 'TYPE',
+              value: 'dragon'
+            }
+          }
+        }
+      }
+    })
+    .expect(200)
+    .then((response) => {
+      const {ssml} = response.body.response.outputSpeech;
+
+      return expect(ssml).to.eql('<speak>Dragon is Supereffective against: Dragon (times 2), Deals normal damage to: Bug, Dark, Electric, Fighting, Fire, Flying, Ghost, Grass, Ground, Ice, Normal, Poison, Psychic, Rock, Water, is Not very effective against: Steel (times 0.5) and Doesn\'t affect: Fairy. Furthermore, Dragon is Vulnerable to: Dragon (times 2),Takes normal damage from: Bug, Dark, Fighting, Flying, Ghost, Ground, Normal, Poison, Psychic, Rock, Steel, andResists: Electric (times 0.5)</speak>');
+    }));
 });
