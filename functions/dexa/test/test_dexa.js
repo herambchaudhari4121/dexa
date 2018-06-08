@@ -117,4 +117,27 @@ describe('Dexa', () => {
 
       return expect(ssml).to.eql('<speak>Dragon Dance, Raises the user\'s Attack and Speed by 1 stage. Dragon Dance is a Dragon type move with 20 pp. Under normal conditions it will have a priority factor of 0 and an accuracy of 100%. In battles with multiple pokemon on each side it will have an effect on Self. It is categorized as a Status type move in battles and as a Cool type move in contests.</speak>');
     }));
+
+  it('responds to a ability lookup event', () => request(server)
+    .post('/dexa')
+    .send({
+      request: {
+        type: 'IntentRequest',
+        intent: {
+          name: 'AbilityIntent',
+          slots: {
+            ABILITY: {
+              name: 'ABILITY',
+              value: 'multiscale'
+            }
+          }
+        }
+      }
+    })
+    .expect(200)
+    .then((response) => {
+      const {ssml} = response.body.response.outputSpeech;
+
+      return expect(ssml).to.eql('<speak>Multiscale, If this Pokemon is at full HP, damage taken from attacks is halved.</speak>');
+    }));
 });
