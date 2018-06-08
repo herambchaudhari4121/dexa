@@ -64,7 +64,7 @@ app.intent('MoveIntent', {
 
 app.intent('TypeIntent', {
   slots: {TYPE: 'TYPE'},
-  utterances: ['type {-|TYPE}']
+  utterances: ['type {-|TYPE}', 'type {-|TYPE} {-|TYPE}']
 }, (req, res) => {
   typeIntent(req, res);
 });
