@@ -126,7 +126,7 @@ const dexIntent = function (req, res) {
       .say(final)
       .card({ // simple card for testing, also errors.
         type: 'simple',
-        title: `Pokemon Data for ${pokeData.name}`,
+        title: `Pokemon Data for ${pokeData.species}`,
         content: 'test'
       });
 
