@@ -92,7 +92,7 @@ describe('Dexa', () => {
     .then((response) => {
       const {ssml} = response.body.response.outputSpeech;
 
-      return expect(ssml).to.eql('<speak>Life orb, Holder\'s attacks do 1.3x damage, and it loses 1/10 its max HP after the attack. It was introduced in generation 4.</speak>');
+      return expect(ssml).to.eql('<speak>Life orb, Holder\'s attacks do 1.3 times damage, and it loses 1/10 its max HP after the attack. It was introduced in generation 4.</speak>');
     }));
 
   it('responds to a move lookup event', () => request(server)

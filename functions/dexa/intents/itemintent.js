@@ -29,7 +29,7 @@ const itemIntent = function (req, res) {
       gen: itemSearch[0].gen
     };
 
-    const final = oneLine`${itemData.name}, ${itemData.description} It was introduced in generation ${itemData.gen}.`;
+    const final = oneLine`${itemData.name}, ${itemData.description} It was introduced in generation ${itemData.gen}.`.replace(/([0-9]{1}(\.[0-9]){0,1})x/gm, '$1 times');
 
     return res.say(final);
   } catch (err) {
