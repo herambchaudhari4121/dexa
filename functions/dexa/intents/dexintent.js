@@ -1,3 +1,13 @@
+/**
+ * @file DexIntent - Gets information on a pokemon
+ * @module
+ * @name dex
+ * @example ask Dexa pokemon dragonite
+ * @example ask Dexa data on pikachu
+ * @param {SpeechValue} PokemonName The name of the pokemon you want to find
+ * @returns {Speech} Alexa will give the data on the requested pokemon
+ */
+
 const Fuse = require('fuse.js'),
   path = require('path'),
   dexEntries = require(path.join(__dirname, '../data/flavorText.json')),

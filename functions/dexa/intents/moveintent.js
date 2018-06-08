@@ -1,3 +1,14 @@
+/**
+ * @file MoveIntent - Gets information on a move
+ * @module
+ * @name move
+ * @example ask Dexa move dragon dance
+ * @example ask Dexa move extreme speed
+ * @example ask Dexa move swords dance
+ * @param {SpeechValue} MoveName The name of the move you want to find
+ * @returns {Speech} Alexa will give the data on the requested move
+ */
+
 const Fuse = require('fuse.js'),
   path = require('path'),
   {MoveAliases} = require(path.join(__dirname, '../data/aliases')),

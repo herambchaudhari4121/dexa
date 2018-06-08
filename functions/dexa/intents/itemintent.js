@@ -1,3 +1,13 @@
+/**
+ * @file ItemIntent - Gets information about an item
+ * @module
+ * @name item
+ * @example ask Dexa item life orb
+ * @example ask Dexa item assault vest
+ * @param {SpeechValue} ItemName The name of the item you want to find
+ * @returns {Speech} Alexa will give the data on the requested item
+ */
+
 const Fuse = require('fuse.js'),
   path = require('path'),
   {ItemAliases} = require(path.join(__dirname, '../data/aliases')),

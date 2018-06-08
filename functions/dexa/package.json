@@ -17,11 +17,14 @@
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "express": "^4.16.3",
+    "jsdoc-to-markdown": "^4.0.1",
     "mocha": "^5.2.0",
     "supertest": "^3.1.0"
   },
   "scripts": {
     "deploy": "cd ../../ && apex deploy && cd functions/dexa",
+    "docs": "./node_modules/.bin/jsdoc2md --template ../../docs/template.hbs --files intents/*.js | tee ../../docs/docs.md > NUL",
+    "docs:json": "./node_modules/.bin/jsdoc2md --json --files intents/*.js > ../../../favna.xyz/public/dist/dexadocs.json",
     "lint": "./node_modules/.bin/eslint src/commands/**/*.js",
     "lint:fix": "./node_modules/.bin/eslint --fix src/commands/**/*.js",
     "skill": "node skill.js",
@@ -29,5 +32,9 @@
   },
   "engines": {
     "node": ">=8.0.0"
+  },
+  "directories": {
+    "doc": "./docs",
+    "lib": "./functions/dexa"
   }
 }

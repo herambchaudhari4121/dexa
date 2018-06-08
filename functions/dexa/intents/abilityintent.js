@@ -1,3 +1,13 @@
+/**
+ * @file AbilityIntent - Gets information on an ability
+ * @module
+ * @name ability
+ * @example ask Dexa ability multiscale
+ * @example ask Dexa ability pressure
+ * @param {SpeechValue} AbilityName The name of the ability you want to find
+ * @returns {Speech} Alexa will give the data on the requested ability
+ */
+
 const Fuse = require('fuse.js'),
   path = require('path'),
   {AbilityAliases} = require(path.join(__dirname, '../data/aliases')),

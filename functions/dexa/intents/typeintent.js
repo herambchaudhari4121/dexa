@@ -1,3 +1,14 @@
+/**
+ * @file TypeIntent - Get the type matchup of any one or two types
+ * @module
+ * @name type
+ * @example ask Dexa type dragon
+ * @example ask Dexa type fire water
+ * @param {SpeechValue} Type The name of the type you want to know the matchups for
+ * @param {SpeechValue} [SecondType] An optional secondary type to go along with the first one
+ * @returns {Speech} Alexa will give the type matchups of the request
+ */
+
 const path = require('path'),
   {BattleTypeChart} = require(path.join(__dirname, '../data/typechart')),
   {capitalizeFirstLetter, removeDiacritics} = require(path.join(__dirname, '../util')),
