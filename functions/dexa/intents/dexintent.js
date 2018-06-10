@@ -120,9 +120,11 @@ const dexIntent = function (req, res) {
     and it is typically ${pokeData.height} meters tall and weighs about ${pokeData.weight} kilograms.
     ${pokeData.species} appears as roughly ${pokeData.genders}.
     `;
+    
+    res.say(final);
 
-
-    res
+    /* eslint-disable multiline-comment-style, capitalized-comments, line-comment-position */
+    /* res
       .say(final)
       .card({ // simple card for testing, also errors.
         type: 'simple',
@@ -130,8 +132,7 @@ const dexIntent = function (req, res) {
         content: 'test'
       });
 
-    /* eslint-disable multiline-comment-style, capitalized-comments, line-comment-position */
-    /* Card data should become as follows
+     Card data should become as follows
     res.card({
       type: 'standard',
       title: `Pokemon Data for ${pokeData.name}`,
