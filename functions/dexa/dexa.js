@@ -10,7 +10,7 @@ const alexa = require('alexa-app'),
   {removeDiacritics} = require(path.join(__dirname, 'util'));
 
 app.launch((req, res) => {
-  res.say('Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by giving me a command or respond with "help" to learn all my commands. If you want to stop Dexa then respond with "Alexa Stop".').shouldEndSession(false);
+  res.say('Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by giving me a command or respond with "help" to learn all my commands. If you want to stop Dexa then respond with "Alexa Stop".').reprompt('I did not quite catch that, could you repeat it?').shouldEndSession(false);
 });
 
 app.intent('AMAZON.StopIntent', {
@@ -45,7 +45,7 @@ app.intent('AMAZON.HelpIntent', {
   
   You can always stop or cancel anything I am saying by saying \`Alexa Stop\` or \`Alexa Cancel\`. If you want to start browsing you can request something now.`;
 
-  res.say(helpOutput).shouldEndSession(false);
+  res.say(helpOutput).reprompt('I did not quite catch that, could you repeat it?').shouldEndSession(false);
 }
 );
 
