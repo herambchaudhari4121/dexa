@@ -46,7 +46,7 @@ describe('Dexa', () => {
     .then((response) => {
       const {ssml} = response.body.response.outputSpeech;
 
-      return expect(ssml).to.eql('<speak>Welcome to Dexa, your one stop place for PokeDex information. Say "ask dexa for help" to learn my commands, but for now, is there a Pokémon you want to hear about?</speak>');
+      return expect(ssml).to.eql('<speak>Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by giving me a command or respond with "help" to learn all my commands. If you want to stop Dexa then respond with "Alexa Stop".</speak>');
     }));
 
   it('responds to a dex lookup event', () => request(server)
