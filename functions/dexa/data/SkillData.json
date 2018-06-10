@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "dexa",
+            "invocationName": "dexa browser",
             "intents": [
                 {
                     "name": "AMAZON.StopIntent",
@@ -10,6 +10,13 @@
                 {
                     "name": "AMAZON.CancelIntent",
                     "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "what are your commands",
+                        "for help"
+                    ]
                 },
                 {
                     "name": "DexIntent",
@@ -64,13 +71,17 @@
                     "name": "TypeIntent",
                     "slots": [
                         {
-                            "name": "TYPE",
+                            "name": "FIRSTTYPE",
+                            "type": "TYPE"
+                        },
+                        {
+                            "name": "SECONDTYPE",
                             "type": "TYPE"
                         }
                     ],
                     "samples": [
-                        "type {TYPE}",
-                        "type {TYPE} {TYPE}"
+                        "type {FIRSTTYPE} {SECONDTYPE}",
+                        "type {FIRSTTYPE}"
                     ]
                 }
             ],

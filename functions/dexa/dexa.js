@@ -33,7 +33,7 @@ app.intent('AMAZON.CancelIntent', {
 
 app.intent('AMAZON.HelpIntent', {
   slots: {},
-  utterances: []
+  utterances: ['what are your commands', 'for help']
 },
 (req, res) => {
   const helpOutput = stripIndents`Dexa has a couple of sources of information, Pokémon, Items, Abilities, Moves and Type matchups. Respectively these can be invoked with.
