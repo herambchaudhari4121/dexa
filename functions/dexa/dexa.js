@@ -10,7 +10,7 @@ const alexa = require('alexa-app'),
   {removeDiacritics} = require(path.join(__dirname, 'util'));
 
 app.launch((req, res) => {
-  res.say('Welcome to Dexa, your one stop place for PokeDex information. Say "ask dexa for help" to learn my commands, but for now, is there a Pokémon you want to hear about?');
+  res.say('Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by responding now or respond with "help" to learn all my commands or respond with "Alexa Stop" to stop Dexa.').shouldEndSession(false);
 });
 
 app.intent('AMAZON.StopIntent', {
@@ -36,18 +36,16 @@ app.intent('AMAZON.HelpIntent', {
   utterances: ['what are your commands', 'for help']
 },
 (req, res) => {
-  const helpOutput = stripIndents`Dexa has a couple of sources of information, Pokémon, Items, Abilities, Moves and Type matchups. Respectively these can be invoked with.
-  1: \`Ask Dexa Browser Pokemon Dragonite\`.
-  2: \`Ask Dexa Browser Items Life Orb\`.
-  3: \`Ask Dexa Browser Abilities Moves\`.
-  4: \`Ask Dexa Browser Moves Dragon Dance\`.
-  5: \`Ask Dexa Browser Types Dragon Flying\`.
+  const helpOutput = stripIndents`Dexa has a couple of sources of information, Pokémon, Items, Abilities, Moves, and Type matchups. Respectively these can be invoked with.
+  1: \`Ask Dexa Browser Pokemon\`.
+  2: \`Ask Dexa Browser Items\`.
+  3: \`Ask Dexa Browser Abilities\`.
+  4: \`Ask Dexa Browser Moves\`.
+  5: \`Ask Dexa Browser Types\`.
   
-  You can always stop or cancel anything I am saying by saying \`Alexa Stop\` or \`Alexa Cancel\`.`;
-  const reprompt = 'What would you like to do?';
+  You can always stop or cancel anything I am saying by saying \`Alexa Stop\` or \`Alexa Cancel\`. If you want to start browsing you can request something now.`;
 
-  res.say(helpOutput).reprompt(reprompt)
-    .shouldEndSession(false);
+  res.say(helpOutput).shouldEndSession(false);
 }
 );
 
@@ -99,21 +97,21 @@ app.intent('DexIntent', {
 
 app.intent('ItemIntent', {
   slots: {ITEM: 'ITEM'},
-  utterances: ['item {-|ITEM}']
+  utterances: ['item {-|ITEM}', 'items {-|ITEM}']
 }, (req, res) => {
   itemIntent(req, res);
 });
 
 app.intent('AbilityIntent', {
   slots: {ABILITY: 'ABILITY'},
-  utterances: ['ability {-|ABILITY}']
+  utterances: ['ability {-|ABILITY}', 'abilities {-|ABILITY}']
 }, (req, res) => {
   abilityIntent(req, res);
 });
 
 app.intent('MoveIntent', {
   slots: {MOVE: 'MOVE'},
-  utterances: ['move {-|MOVE}']
+  utterances: ['move {-|MOVE}', 'moves {-|MOVE}']
 }, (req, res) => {
   moveIntent(req, res);
 });
@@ -123,7 +121,7 @@ app.intent('TypeIntent', {
     FIRSTTYPE: 'TYPE',
     SECONDTYPE: 'TYPE'
   },
-  utterances: ['type {-|FIRSTTYPE}', 'type {-|FIRSTTYPE} {-|SECONDTYPE}']
+  utterances: ['type {-|FIRSTTYPE}', 'types {-|FIRSTTYPE}', 'type {-|FIRSTTYPE} {-|SECONDTYPE}', 'types {-|FIRSTTYPE} {-|SECONDTYPE}']
 }, (req, res) => {
   typeIntent(req, res);
 });
