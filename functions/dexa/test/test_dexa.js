@@ -33,7 +33,7 @@ describe('Dexa', () => {
         shouldEndSession: true,
         outputSpeech: {
           type: 'SSML',
-          ssml: '<speak>Sorry, I couldn\'t find data for that request.</speak>'
+          ssml: '<speak>Something went awfully wrong browsing my dataset. Please use `Alexa ask Dexa Browser for help` if you are unsure how to use Dexa</speak>'
         }
       },
       sessionAttributes: {}
@@ -46,7 +46,7 @@ describe('Dexa', () => {
     .then((response) => {
       const {ssml} = response.body.response.outputSpeech;
 
-      return expect(ssml).to.eql('<speak>Dexa is ready for browsing!</speak>');
+      return expect(ssml).to.eql('<speak>Welcome to Dexa, your one stop place for PokeDex information. Say "ask dexa for help" to learn my commands, but for now, is there a Pokémon you want to hear about?</speak>');
     }));
 
   it('responds to a dex lookup event', () => request(server)
@@ -141,7 +141,7 @@ describe('Dexa', () => {
       return expect(ssml).to.eql('<speak>Multiscale, If this Pokemon is at full HP, damage taken from attacks is halved.</speak>');
     }));
 
-  it('responds to a type lookup event', () => request(server)
+  it('responds to a single type lookup event', () => request(server)
     .post('/dexa')
     .send({
       request: {
@@ -149,7 +149,7 @@ describe('Dexa', () => {
         intent: {
           name: 'TypeIntent',
           slots: {
-            TYPE: {
+            FIRSTTYPE: {
               name: 'TYPE',
               value: 'dragon'
             }
@@ -162,5 +162,32 @@ describe('Dexa', () => {
       const {ssml} = response.body.response.outputSpeech;
 
       return expect(ssml).to.eql('<speak>Dragon is Supereffective against: Dragon (times 2), Deals normal damage to: Bug, Dark, Electric, Fighting, Fire, Flying, Ghost, Grass, Ground, Ice, Normal, Poison, Psychic, Rock, Water, is Not very effective against: Steel (times 0.5) and Doesn\'t affect: Fairy. Furthermore, Dragon is Vulnerable to: Dragon (times 2),Takes normal damage from: Bug, Dark, Fighting, Flying, Ghost, Ground, Normal, Poison, Psychic, Rock, Steel, and Resists: Electric (times 0.5)</speak>');
+    }));
+
+  it('responds to a dual type lookup event', () => request(server)
+    .post('/dexa')
+    .send({
+      request: {
+        type: 'IntentRequest',
+        intent: {
+          name: 'TypeIntent',
+          slots: {
+            FIRSTTYPE: {
+              name: 'TYPE',
+              value: 'dragon'
+            },
+            SECONDTYPE: {
+              name: 'TYPE',
+              value: 'flying'
+            }
+          }
+        }
+      }
+    })
+    .expect(200)
+    .then((response) => {
+      const {ssml} = response.body.response.outputSpeech;
+
+      return expect(ssml).to.eql('<speak>Dragon Flying is Supereffective against: Bug (times 2), Deals normal damage to: Dark, Fire, Flying, Ghost, Ground, Ice, Normal, Poison, Psychic, Water, is Not very effective against: Electric (times 0.5), Steel (times 0.25) and Doesn\'t affect: Fairy. Furthermore, Dragon Flying is Vulnerable to: Dragon (times 2), Ice (times 4),Takes normal damage from: Dark, Electric, Flying, Ghost, Normal, Poison, Psychic, Steel, Resists: Bug (times 0.5), Grass (times 0.25) and is Not affected by: Ground</speak>');
     }));
 });

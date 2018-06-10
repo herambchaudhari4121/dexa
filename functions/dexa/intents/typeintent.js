@@ -16,7 +16,30 @@ const path = require('path'),
 
 const typeIntent = function (req, res) {
   try {
-    const types = removeDiacritics(req.slot('TYPE'));
+    const data = {
+        typeone: req.slot('FIRSTTYPE') ? removeDiacritics(req.slot('FIRSTTYPE')).toLowerCase() : null,
+        typetwo: req.slot('SECONDTYPE') ? removeDiacritics(req.slot('SECONDTYPE')).toLowerCase() : null
+      },
+      validTypes = ['bug', 'dark', 'dragon', 'electric', 'fairy', 'fighting', 'fire', 'flying', 'ghost', 'grass', 'ground', 'ice', 'normal', 'poison', 'psychic', 'rock', 'steel', 'water'];
+
+    let types = null;
+
+    /* eslint-disable curly */
+    if (!data.typeone) {
+      throw new Error('err');
+    } else if (data.typeone && !data.typetwo) {
+
+      if (validTypes.includes(data.typeone)) types = data.typeone;
+      else throw new Error('err');
+
+    } else if (data.typeone && data.typetwo) {
+      if (validTypes.includes(data.typeone)) types = data.typeone;
+      else throw new Error('err');
+
+      if (validTypes.includes(data.typetwo)) types += ` ${data.typetwo}`;
+      else throw new Error('err');
+    }
+    /* eslint-enable curly */
 
     const atkMulti = {
         Bug: 1,
@@ -214,8 +237,8 @@ const typeIntent = function (req, res) {
     ${vulnDisplay[3] ? '' : 'and '}${vulnDisplay[2]} ${vulnDisplay[3] ? `and is ${vulnDisplay[3]}` : ''}`.replace(/x([0-9]{1}(\.[0-9]){0,1})/gm, 'times $1');
 
     return res.say(final);
+
   } catch (err) {
-    console.error(err);
     throw new Error('Type not found');
   }
 };

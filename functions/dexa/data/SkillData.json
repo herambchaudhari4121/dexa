@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "dexa",
+            "invocationName": "dexa browser",
             "intents": [
                 {
                     "name": "AMAZON.StopIntent",
@@ -10,6 +10,13 @@
                 {
                     "name": "AMAZON.CancelIntent",
                     "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "what are your commands",
+                        "for help"
+                    ]
                 },
                 {
                     "name": "DexIntent",
@@ -33,6 +40,7 @@
                         }
                     ],
                     "samples": [
+                        "items {ITEM}",
                         "item {ITEM}"
                     ]
                 },
@@ -45,6 +53,7 @@
                         }
                     ],
                     "samples": [
+                        "abilities {ABILITY}",
                         "ability {ABILITY}"
                     ]
                 },
@@ -57,6 +66,7 @@
                         }
                     ],
                     "samples": [
+                        "moves {MOVE}",
                         "move {MOVE}"
                     ]
                 },
@@ -64,13 +74,19 @@
                     "name": "TypeIntent",
                     "slots": [
                         {
-                            "name": "TYPE",
+                            "name": "FIRSTTYPE",
+                            "type": "TYPE"
+                        },
+                        {
+                            "name": "SECONDTYPE",
                             "type": "TYPE"
                         }
                     ],
                     "samples": [
-                        "type {TYPE}",
-                        "type {TYPE} {TYPE}"
+                        "types {FIRSTTYPE}",
+                        "types {FIRSTTYPE} {SECONDTYPE}",
+                        "type {FIRSTTYPE} {SECONDTYPE}",
+                        "type {FIRSTTYPE}"
                     ]
                 }
             ],
