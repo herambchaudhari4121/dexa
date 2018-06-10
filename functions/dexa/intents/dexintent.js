@@ -120,30 +120,8 @@ const dexIntent = function (req, res) {
     and it is typically ${pokeData.height} meters tall and weighs about ${pokeData.weight} kilograms.
     ${pokeData.species} appears as roughly ${pokeData.genders}.
     `;
-    
-    res.say(final);
 
-    /* eslint-disable multiline-comment-style, capitalized-comments, line-comment-position */
-    /* res
-      .say(final)
-      .card({ // simple card for testing, also errors.
-        type: 'simple',
-        title: `Pokemon Data for ${pokeData.species}`,
-        content: 'test'
-      });
-
-     Card data should become as follows
-    res.card({
-      type: 'standard',
-      title: `Pokemon Data for ${pokeData.name}`,
-      text: final,
-      image: {
-        smallImageUrl: pokeData.number < 0 ? 'https://favna.xyz/images/ribbonhost/pokesprites/unknown.png' : `https://favna.xyz/images/ribbonhost/pokesprites/regular/${pokeData.species.replace(/ /g, '_').toLowerCase()}.png`,
-        largeImageUrl: `https://play.pokemonshowdown.com/sprites/xyani/${pokeData.species.toLowerCase().replace(/ /g, '')}.gif`
-      }
-    });
-    */
-
+    return res.say(final);
   } catch (err) {
     console.error(err);
     throw new Error('Pokemon not found');
