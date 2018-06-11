@@ -236,8 +236,13 @@ const typeIntent = function (req, res) {
     Furthermore, ${displayTypes.join(' ')} is ${vulnDisplay[0]},${vulnDisplay[1]},
     ${vulnDisplay[3] ? '' : 'and '}${vulnDisplay[2]} ${vulnDisplay[3] ? `and is ${vulnDisplay[3]}` : ''}`.replace(/x([0-9]{1}(\.[0-9]){0,1})/gm, 'times $1');
 
-    return res.say(final);
-
+    return res
+      .say(final)
+      .card({
+        type: 'Simple',
+        title: `Dexa Type Matchup Data for ${types}`,
+        content: final
+      });
   } catch (err) {
     throw new Error('Type not found');
   }

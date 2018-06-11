@@ -121,7 +121,14 @@ const dexIntent = function (req, res) {
     ${pokeData.species} appears as roughly ${pokeData.genders}.
     `;
 
-    return res.say(final);
+    return res
+      .say(final)
+      .card({
+        type: 'Standard',
+        title: `Dexa Pokemon Data for ${pokeData.species}`,
+        text: final,
+        image: {largeImageUrl: `https://favna.xyz/images/ribbonhost/pokesprites/large/${pokeData.species.replace(/ /g, '').toLowerCase()}.png`}
+      });
   } catch (err) {
     console.error(err);
     throw new Error('Pokemon not found');
