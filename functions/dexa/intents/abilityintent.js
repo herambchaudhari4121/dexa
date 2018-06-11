@@ -40,7 +40,13 @@ const abilityIntent = function (req, res) {
 
     const final = oneLine`${abilityData.name}, ${abilityData.description}`;
 
-    return res.say(final);
+    return res
+      .say(final)
+      .card({
+        type: 'Simple',
+        title: `Dexa Ability Data for ${abilityData.name}`,
+        content: final
+      });
   } catch (err) {
     console.error(err);
     throw new Error('Ability not found');

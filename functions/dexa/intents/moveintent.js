@@ -65,7 +65,13 @@ const moveIntent = function (req, res) {
     It is categorized as a ${moveData.category} type move in battles and as a ${moveData.contestType} type move in contests.
     `;
 
-    return res.say(final);
+    return res
+      .say(final)
+      .card({
+        type: 'Simple',
+        title: `Dexa Move Data for ${moveData.name}`,
+        content: final
+      });
   } catch (err) {
     console.error(err);
     throw new Error('Move not found');
