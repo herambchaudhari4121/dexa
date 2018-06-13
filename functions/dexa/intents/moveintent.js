@@ -61,7 +61,7 @@ const moveIntent = function (req, res) {
     const final = oneLine`${moveData.name}, ${moveData.description}
     ${moveData.name} is a${(/(electric|ice)/i).test(moveData.type) ? 'n' : ''} ${moveData.type} type move with ${moveData.basePower ? `a base power of ${moveData.basePower} and it has` : ''} ${moveData.pp} pp.
     Under normal conditions it will have a priority factor of ${moveData.priority} and an accuracy of ${moveData.accuracy}.
-    In battles with multiple pokemon on each side it will have an effect on ${moveData.target === 'self' ? 'the user' : moveData.target === 'adjacentAllyOrSelf' ? 'the user or an adjacent battle partner' : moveData.target}.
+    In battles with multiple pokemon on each side it will have an effect on ${moveData.target === 'Self' ? 'the user' : moveData.target === 'Adjacent ally or self' ? 'the user or an adjacent battle partner' : moveData.target}.
     ${moveData.zpower ? `This move require the use of the ${moveData.zpower}.` : ''}
     It is categorized as a ${moveData.category} type move in battles and as a ${moveData.contestType} type move in contests.
     `;
