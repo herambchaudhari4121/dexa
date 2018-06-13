@@ -5,15 +5,22 @@
             "intents": [
                 {
                     "name": "AMAZON.StopIntent",
-                    "samples": []
+                    "samples": [
+                        "end",
+                        "stop"
+                    ]
                 },
                 {
                     "name": "AMAZON.CancelIntent",
-                    "samples": []
+                    "samples": [
+                        "quit",
+                        "cancel"
+                    ]
                 },
                 {
                     "name": "AMAZON.HelpIntent",
                     "samples": [
+                        "help",
                         "what are your commands",
                         "for help"
                     ]
@@ -27,8 +34,9 @@
                         }
                     ],
                     "samples": [
-                        "data on {POKEMON}",
-                        "pokemon {POKEMON}"
+                        "pokemon data {POKEMON}",
+                        "pokemon data for {POKEMON}",
+                        "data on {POKEMON}"
                     ]
                 },
                 {
@@ -40,8 +48,8 @@
                         }
                     ],
                     "samples": [
-                        "items {ITEM}",
-                        "item {ITEM}"
+                        "item data {ITEM}",
+                        "item data for {ITEM}"
                     ]
                 },
                 {
@@ -53,8 +61,8 @@
                         }
                     ],
                     "samples": [
-                        "abilities {ABILITY}",
-                        "ability {ABILITY}"
+                        "ability data {ABILITY}",
+                        "ability data for {ABILITY}"
                     ]
                 },
                 {
@@ -66,8 +74,8 @@
                         }
                     ],
                     "samples": [
-                        "moves {MOVE}",
-                        "move {MOVE}"
+                        "move data {MOVE}",
+                        "move data for {MOVE}"
                     ]
                 },
                 {
@@ -83,10 +91,14 @@
                         }
                     ],
                     "samples": [
-                        "types {FIRSTTYPE}",
-                        "types {FIRSTTYPE} {SECONDTYPE}",
-                        "type {FIRSTTYPE} {SECONDTYPE}",
-                        "type {FIRSTTYPE}"
+                        "type data for {FIRSTTYPE}",
+                        "type data for {FIRSTTYPE} {SECONDTYPE}",
+                        "type data {FIRSTTYPE}",
+                        "type data {FIRSTTYPE} {SECONDTYPE}",
+                        "type matchups for {FIRSTTYPE}",
+                        "type matchups for {FIRSTTYPE} {SECONDTYPE}",
+                        "type matchups {FIRSTTYPE}",
+                        "type matchups {FIRSTTYPE} {SECONDTYPE}"
                     ]
                 }
             ],
@@ -12999,6 +13011,77 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "ItemIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "ITEM",
+                            "type": "ITEM",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.76621735923.637498217304"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "AbilityIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "ABILITY",
+                            "type": "ABILITY",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1230829424260.540598846392"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "MoveIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "MOVE",
+                            "type": "MOVE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.879018064619.71787726151"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "TypeIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "FIRSTTYPE",
+                            "type": "TYPE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.913965986783.1140836100698"
+                            }
+                        },
+                        {
+                            "name": "SECONDTYPE",
+                            "type": "TYPE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
                 }
             ]
         },
@@ -13009,6 +13092,42 @@
                     {
                         "type": "PlainText",
                         "value": "What pokemon do you want me to find?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.76621735923.637498217304",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What item do you want me to find?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1230829424260.540598846392",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What ability do you want me to find?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.879018064619.71787726151",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What move do you want me to find?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.913965986783.1140836100698",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What type do you want me to find?"
                     }
                 ]
             }

@@ -10,12 +10,15 @@ const alexa = require('alexa-app'),
   {removeDiacritics} = require(path.join(__dirname, 'util'));
 
 app.launch((req, res) => {
-  res.say('Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by giving me a command, or respond with "help" to learn all my commands. If you want to stop Dexa, then respond with "Alexa Stop".').reprompt('I did not quite catch that, could you repeat it?').shouldEndSession(false);
+  const prompt = 'Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by giving me a command, or respond with "help" to learn all my commands. If you want to stop Dexa, then respond with "Alexa Stop".',
+    reprompt = 'I did not quite catch that, could you repeat it?';
+
+  res.say(prompt).reprompt(reprompt).shouldEndSession(false);
 });
 
 app.intent('AMAZON.StopIntent', {
   slots: {},
-  utterances: []
+  utterances: ['stop', 'end']
 }, (req, res) => {
   const stopOutput = 'Don\'t You Worry. I\'ll be back.';
 
@@ -24,7 +27,7 @@ app.intent('AMAZON.StopIntent', {
 
 app.intent('AMAZON.CancelIntent', {
   slots: {},
-  utterances: []
+  utterances: ['cancel', 'quit']
 }, (req, res) => {
   const cancelOutput = 'No problem. Request cancelled.';
 
@@ -33,15 +36,15 @@ app.intent('AMAZON.CancelIntent', {
 
 app.intent('AMAZON.HelpIntent', {
   slots: {},
-  utterances: ['what are your commands', 'for help']
+  utterances: ['what are your commands', 'for help', 'help']
 },
 (req, res) => {
   const helpOutput = stripIndents`Dexa has a couple of sources of information, Pokémon, Items, Abilities, Moves, and Type matchups. Respectively these can be invoked with.
-  1: \`Ask Dexa Browser Pokemon\`.
-  2: \`Ask Dexa Browser Items\`.
-  3: \`Ask Dexa Browser Abilities\`.
-  4: \`Ask Dexa Browser Moves\`.
-  5: \`Ask Dexa Browser Types\`.
+  1: \`Ask Dexa Browser pokemon data\`.
+  2: \`Ask Dexa Browser item data\`.
+  3: \`Ask Dexa Browser ability data\`.
+  4: \`Ask Dexa Browser move data\`.
+  5: \`Ask Dexa Browser type data\`.
   
   You can always stop or cancel anything I am saying by saying \`Alexa Stop\` or \`Alexa Cancel\`. If you want to start browsing you can request something now.`;
 
@@ -90,28 +93,28 @@ app.error = function (exc, req, res) {
 
 app.intent('DexIntent', {
   slots: {POKEMON: 'POKEMON'},
-  utterances: ['data on {-|POKEMON}', 'pokemon {-|POKEMON}']
+  utterances: ['data on {-|POKEMON}', 'pokemon data for {-|POKEMON}', 'pokemon data {-|POKEMON}']
 }, (req, res) => {
   dexIntent(req, res);
 });
 
 app.intent('ItemIntent', {
   slots: {ITEM: 'ITEM'},
-  utterances: ['item {-|ITEM}', 'items {-|ITEM}']
+  utterances: ['item data {-|ITEM}', 'item data for {-|ITEM}']
 }, (req, res) => {
   itemIntent(req, res);
 });
 
 app.intent('AbilityIntent', {
   slots: {ABILITY: 'ABILITY'},
-  utterances: ['ability {-|ABILITY}', 'abilities {-|ABILITY}']
+  utterances: ['ability data for {-|ABILITY}', 'ability data {-|ABILITY}']
 }, (req, res) => {
   abilityIntent(req, res);
 });
 
 app.intent('MoveIntent', {
   slots: {MOVE: 'MOVE'},
-  utterances: ['move {-|MOVE}', 'moves {-|MOVE}']
+  utterances: ['move data for {-|MOVE}', 'move data {-|MOVE}']
 }, (req, res) => {
   moveIntent(req, res);
 });
@@ -121,7 +124,12 @@ app.intent('TypeIntent', {
     FIRSTTYPE: 'TYPE',
     SECONDTYPE: 'TYPE'
   },
-  utterances: ['type {-|FIRSTTYPE}', 'types {-|FIRSTTYPE}', 'type {-|FIRSTTYPE} {-|SECONDTYPE}', 'types {-|FIRSTTYPE} {-|SECONDTYPE}']
+  utterances: [
+    'type data for {-|FIRSTTYPE}', 'type data for {-|FIRSTTYPE} {-|SECONDTYPE}',
+    'type data {-|FIRSTTYPE}', 'type data {-|FIRSTTYPE} {-|SECONDTYPE}',
+    'type matchups for {-|FIRSTTYPE}', 'type matchups for {-|FIRSTTYPE} {-|SECONDTYPE}',
+    'type matchups {-|FIRSTTYPE}', 'type matchups {-|FIRSTTYPE} {-|SECONDTYPE}'
+  ]
 }, (req, res) => {
   typeIntent(req, res);
 });
