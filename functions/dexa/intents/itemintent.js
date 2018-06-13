@@ -49,7 +49,7 @@ const itemIntent = function (req, res) {
         content: final
       });
   } catch (err) {
-    const prompt = `Sorry, I did not quite catch that. ${req.slot('ITEM') ? `I think you said ${removeDiacritics(req.slot('ITEM'))}? ` : ''}Please repeat the item command with a better input, or respond with \`Alexa Cancel\` if you want to stop`;
+    const prompt = `Sorry, I did not quite catch that. ${req.slot('ITEM') ? `I think you said ${removeDiacritics(req.slot('ITEM'))}? ` : ''}Please repeat the item command with a better input, or respond with "Alexa Cancel" if you want to stop`;
 
     return res.say(prompt).reprompt(prompt).shouldEndSession(false);
   }

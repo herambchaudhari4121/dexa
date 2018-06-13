@@ -75,7 +75,7 @@ const moveIntent = function (req, res) {
         content: final
       });
   } catch (err) {
-    const prompt = `Sorry, I did not quite catch that. ${req.slot('MOVE') ? `I think you said ${removeDiacritics(req.slot('MOVE'))}? ` : ''}Please repeat the move command with a better input, or respond with \`Alexa Cancel\` if you want to stop`;
+    const prompt = `Sorry, I did not quite catch that. ${req.slot('MOVE') ? `I think you said ${removeDiacritics(req.slot('MOVE'))}? ` : ''}Please repeat the move command with a better input, or respond with "Alexa Cancel" if you want to stop`;
 
     return res.say(prompt).reprompt(prompt).shouldEndSession(false);
   }
