@@ -130,8 +130,9 @@ const dexIntent = function (req, res) {
         image: {largeImageUrl: `https://favna.xyz/images/ribbonhost/pokesprites/large/${pokeData.species.replace(/ /g, '').toLowerCase()}.png`}
       });
   } catch (err) {
-    console.error(err);
-    throw new Error('Pokemon not found');
+    const prompt = `Sorry, I did not quite catch that. ${req.slot('POKEMON') ? `I think you said ${removeDiacritics(req.slot('POKEMON'))}? ` : ''}Please repeat the pokemon command with a better input, or respond with \`Alexa Cancel\` if you want to stop`;
+
+    return res.say(prompt).reprompt(prompt).shouldEndSession(false);
   }
 };
 

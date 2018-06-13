@@ -244,7 +244,19 @@ const typeIntent = function (req, res) {
         content: final
       });
   } catch (err) {
-    throw new Error('Type not found');
+    const data = {
+      typeone: req.slot('FIRSTTYPE') ? removeDiacritics(req.slot('FIRSTTYPE')).toLowerCase() : null,
+      typetwo: req.slot('SECONDTYPE') ? removeDiacritics(req.slot('SECONDTYPE')).toLowerCase() : null
+    };
+
+    let types = '';
+
+    data.typeone ? types += data.typeone : null;
+    data.typetwo ? types += ` and ${data.typetwo}` : null;
+
+    const prompt = `Sorry, I did not quite catch that. ${types ? `I think you said ${types}? ` : ''}Please repeat the type command with a better input, or respond with \`Alexa Cancel\` if you want to stop`;
+
+    return res.say(prompt).reprompt(prompt).shouldEndSession(false);
   }
 };
 

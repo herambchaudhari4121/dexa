@@ -52,18 +52,20 @@ const moveIntent = function (req, res) {
       category: moveSearch[0].category,
       accuracy: typeof moveSearch[0].accuracy === 'boolean' ? '100%' : `${moveSearch[0].accuracy}%`,
       priority: moveSearch[0].priority,
-      target: moveSearch[0].target === 'normal' ? 'One Enemy' : capitalizeFirstLetter(moveSearch[0].target.replace(/([A-Z])/g, ' $1')),
+      target: moveSearch[0].target === 'normal' || moveSearch[0].target === 'any' ? 'One Enemy' : capitalizeFirstLetter(moveSearch[0].target.replace(/([A-Z])/g, ' $1')),
       contestType: moveSearch[0].contestType,
       zpower: moveSearch[0].isZ ? `${capitalizeFirstLetter(moveSearch[0].isZ.substring(0, moveSearch[0].isZ.length - 1))}Z` : null
     };
 
+    /* eslint-disable no-nested-ternary*/
     const final = oneLine`${moveData.name}, ${moveData.description}
-    ${moveData.name} is a ${moveData.type} type move with ${moveData.basePower ? `a base power of ${moveData.basePower} and it has` : ''} ${moveData.pp} pp.
+    ${moveData.name} is a${(/(electric|ice)/i).test(moveData.type) ? 'n' : ''} ${moveData.type} type move with ${moveData.basePower ? `a base power of ${moveData.basePower} and it has` : ''} ${moveData.pp} pp.
     Under normal conditions it will have a priority factor of ${moveData.priority} and an accuracy of ${moveData.accuracy}.
-    In battles with multiple pokemon on each side it will have an effect on ${moveData.target}.
+    In battles with multiple pokemon on each side it will have an effect on ${moveData.target === 'self' ? 'the user' : moveData.target === 'adjacentAllyOrSelf' ? 'the user or an adjacent battle partner' : moveData.target}.
     ${moveData.zpower ? `This move require the use of the ${moveData.zpower}.` : ''}
     It is categorized as a ${moveData.category} type move in battles and as a ${moveData.contestType} type move in contests.
     `;
+    /* eslint-enable */
 
     return res
       .say(final)
@@ -73,8 +75,9 @@ const moveIntent = function (req, res) {
         content: final
       });
   } catch (err) {
-    console.error(err);
-    throw new Error('Move not found');
+    const prompt = `Sorry, I did not quite catch that. ${req.slot('MOVE') ? `I think you said ${removeDiacritics(req.slot('MOVE'))}? ` : ''}Please repeat the move command with a better input, or respond with \`Alexa Cancel\` if you want to stop`;
+
+    return res.say(prompt).reprompt(prompt).shouldEndSession(false);
   }
 };
 
