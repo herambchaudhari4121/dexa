@@ -50,42 +50,47 @@ const dexIntent = function (req, res) {
       pokeSearch = !firstSearch.length && aliasSearch.length ? pokeFuse.search(aliasSearch[0].name) : firstSearch;
     /* eslint-enable sort-vars */
 
-    const pokeData = {
-      abilities: [],
-      evos: [],
-      prevos: [],
-      flavors: '*PokéDex data not found for this Pokémon*',
-      genders: '',
-      height: pokeSearch[0].heightm,
-      number: pokeSearch[0].num,
-      species: pokeSearch[0].species,
-      types: pokeSearch[0].types,
-      weight: pokeSearch[0].weightkg
-    };
+    const poke = pokeSearch[0],
+      pokeData = {
+        abilities: [],
+        evos: [],
+        prevos: [],
+        flavors: '*PokéDex data not found for this Pokémon*',
+        genders: '',
+        height: poke.heightm,
+        number: poke.num,
+        species: poke.species,
+        types: poke.types,
+        weight: poke.weightkg
+      };
 
-    if (pokeSearch[0].prevo) {
-      pokeData.prevos.push(capitalizeFirstLetter(pokeSearch[0].prevo));
+    if (poke.prevo) {
+      pokeData.prevos.push(`${capitalizeFirstLetter(poke.prevo)}, (${isNaN(poke.evoLevel) ? `Special Condition; ${poke.evoLevel}` : `Level ${poke.evoLevel}`})`);
 
-      if (pokeFuse.search(pokeSearch[0].prevo).length && pokeFuse.search(pokeSearch[0].prevo)[0].prevo) {
-        pokeData.prevos.push(capitalizeFirstLetter(pokeFuse.search(pokeSearch[0].prevo)[0].prevo));
+      if (pokeFuse.search(poke.prevo).length && pokeFuse.search(poke.prevo)[0].prevo) {
+        const stagedPrevo = pokeFuse.search(poke.prevo)[0];
+
+        pokeData.prevos.push(`${capitalizeFirstLetter(stagedPrevo.prevo)}, (${isNaN(stagedPrevo.evoLevel) ? `Special Condition; ${stagedPrevo.evoLevel}` : `Level ${stagedPrevo.evoLevel}`})`);
       }
     }
 
-    if (pokeSearch[0].evos) {
-      pokeData.evos.push(pokeSearch[0].evos.map(entry => capitalizeFirstLetter(entry)).join(', '));
+    if (poke.evos) {
+      pokeData.evos.push(poke.evos.map(entry => `${capitalizeFirstLetter(entry)}, (${isNaN(pokeFuse.search(entry)[0].evoLevel) ? `Special Condition; ${pokeFuse.search(entry)[0].evoLevel}` : `Level ${pokeFuse.search(entry)[0].evoLevel}`})`).join(', '));
 
-      if (pokeSearch[0].evos.length === 1) {
-        if (pokeFuse.search(pokeSearch[0].evos[0]).length && pokeFuse.search(pokeSearch[0].evos[0])[0].evos) {
-          pokeData.evos.push(pokeFuse.search(pokeSearch[0].evos[0])[0].evos.map(entry => capitalizeFirstLetter(entry)).join(', '));
+      if (poke.evos.length === 1) {
+        if (pokeFuse.search(poke.evos[0]).length && pokeFuse.search(poke.evos[0])[0].evos) {
+          const stagedEvo = pokeFuse.search(poke.evos[0])[0];
+
+          pokeData.evos.push(stagedEvo.evos.map(entry => `${capitalizeFirstLetter(entry)}, (${isNaN(pokeFuse.search(entry)[0].evoLevel) ? `Special Condition; ${pokeFuse.search(entry)[0].evoLevel}` : `Level ${pokeFuse.search(entry)[0].evoLevel}`})`).join(', '));
         }
       }
     }
 
-    for (const ability in pokeSearch[0].abilities) {
-      pokeData.abilities.push(pokeSearch[0].abilities[ability]);
+    for (const ability in poke.abilities) {
+      pokeData.abilities.push(poke.abilities[ability]);
     }
 
-    switch (pokeSearch[0].gender) {
+    switch (poke.gender) {
     case 'N':
       pokeData.genders = 'None';
       break;
@@ -100,15 +105,15 @@ const dexIntent = function (req, res) {
       break;
     }
 
-    if (pokeSearch[0].genderRatio) {
-      pokeData.genders = `${pokeSearch[0].genderRatio.M * 100}% Male and ${pokeSearch[0].genderRatio.F * 100}% Female`;
+    if (poke.genderRatio) {
+      pokeData.genders = `${poke.genderRatio.M * 100}% Male and ${poke.genderRatio.F * 100}% Female`;
     }
 
-    if (pokeSearch[0].num >= 0) {
-      if (pokeSearch[0].forme && dexEntries[`${pokeSearch[0].num}${pokeSearch[0].forme.toLowerCase()}`]) {
-        pokeData.flavors = dexEntries[`${pokeSearch[0].num}${pokeSearch[0].forme.toLowerCase()}`][dexEntries[`${pokeSearch[0].num}${pokeSearch[0].forme.toLowerCase()}`].length - 1].flavor_text;
+    if (poke.num >= 0) {
+      if (poke.forme && dexEntries[`${poke.num}${poke.forme.toLowerCase()}`]) {
+        pokeData.flavors = dexEntries[`${poke.num}${poke.forme.toLowerCase()}`][dexEntries[`${poke.num}${poke.forme.toLowerCase()}`].length - 1].flavor_text;
       } else {
-        pokeData.flavors = dexEntries[pokeSearch[0].num][dexEntries[pokeSearch[0].num].length - 1].flavor_text;
+        pokeData.flavors = dexEntries[poke.num][dexEntries[poke.num].length - 1].flavor_text;
       }
     }
 
@@ -130,6 +135,7 @@ const dexIntent = function (req, res) {
         image: {largeImageUrl: `https://favna.xyz/images/ribbonhost/pokesprites/large/${pokeData.species.replace(/ /g, '').toLowerCase()}.png`}
       });
   } catch (err) {
+    console.error(err);
     const prompt = `Sorry, I did not quite catch that. ${req.slot('POKEMON') ? `I think you said ${removeDiacritics(req.slot('POKEMON'))}? ` : ''}Please repeat the pokemon command with a better input, or respond with "Alexa Cancel" if you want to stop`;
 
     return res.say(prompt).reprompt(prompt).shouldEndSession(false);
