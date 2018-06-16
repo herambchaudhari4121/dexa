@@ -46,7 +46,7 @@ describe('Dexa', () => {
     .then((response) => {
       const {ssml} = response.body.response.outputSpeech;
 
-      return expect(ssml).to.eql('<speak>Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by giving me a command or respond with "help" to learn all my commands. If you want to stop Dexa then respond with "Alexa Stop".</speak>');
+      return expect(ssml).to.eql('<speak>Welcome to Dexa, your one stop place for PokéDex information. You can start browsing right away by giving me a command, or respond with "help" to learn all my commands. If you want to stop Dexa, then respond with "Alexa Stop".</speak>');
     }));
 
   it('responds to a dex lookup event', () => request(server)
@@ -115,7 +115,7 @@ describe('Dexa', () => {
     .then((response) => {
       const {ssml} = response.body.response.outputSpeech;
 
-      return expect(ssml).to.eql('<speak>Dragon Dance, Raises the user\'s Attack and Speed by 1 stage. Dragon Dance is a Dragon type move with 20 pp. Under normal conditions it will have a priority factor of 0 and an accuracy of 100%. In battles with multiple pokemon on each side it will have an effect on Self. It is categorized as a Status type move in battles and as a Cool type move in contests.</speak>');
+      return expect(ssml).to.eql('<speak>Dragon Dance, Raises the user\'s Attack and Speed by 1 stage. Dragon Dance is a Dragon type move with 20 pp. Under normal conditions it will have a priority factor of 0 and an accuracy of 100%. In battles with multiple pokemon on each side it will have an effect on the user. It is categorized as a Status type move in battles and as a Cool type move in contests.</speak>');
     }));
 
   it('responds to a ability lookup event', () => request(server)
