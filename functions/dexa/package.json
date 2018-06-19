@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "Simple pokedex skill for Alexa",
   "main": "functions/dexa/index.js",
-  "repository": "git@bitbucket.org:Favna/dexa.git",
+  "repository": "git@github.com:Favna/Dexa.git",
   "author": "Jeroen Claassens <jeroen.claassens@live.nl>",
   "license": "GPL-3.0",
   "private": false,

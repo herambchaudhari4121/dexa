@@ -1,13 +1,27 @@
-[![Dexa](https://i.imgur.com/LpV1shX.png)](https://favna.xyz/dexa)
+<div align="center">
+  <p>
+    <h1> Dexa </h1>
+    <a href="https://favna.xyz/dexa"><img src="https://favna.xyz/images/svgs/dexa.svg" height="200" alt="Dexa"/></a>
+  </p>
 
-[![GPLv3 license](https://img.shields.io/badge/License-GPLv3.0-orange.svg?style=for-the-badge)](https://bitbucket.org/Favna/dexa/src/master/LICENSE.md)[![Twitter Follow](https://img.shields.io/twitter/follow/favna_.svg?style=for-the-badge&label=Follow)](https://twitter.com/favna_)[![PayPal Donate](https://img.shields.io/badge/Donate-PayPal-547ab8.svg?style=for-the-badge)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)[![Become a Patron](https://i.imgur.com/05PzBRU.png)](https://www.patreon.com/bePatron?u=9336537)
+  <p>
+    <a href="https://depfu.com/repos/Favna/Dexa"><img src="https://img.shields.io/depfu/Favna/Dexa.svg?style=for-the-badge" alt="Depfu" /></a><!--
+    --><a href="https://circleci.com/gh/Favna/Dexa/tree/master"><img src="https://img.shields.io/circleci/project/github/Favna/Dexa.svg?style=for-the-badge" alt="CircleCI"></a><!--
+    --><a href="https://github.com/Favna/Dexa/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/favna/Dexa.svg?style=for-the-badge" alt="License"></a>
+  </p>
 
-[![Support Server](https://discordapp.com/api/guilds/246821351585742851/widget.png?style=banner2)](https://discord.gg/zdt5yQt)
+  <p>
+    <a href="https://twitter.com/Favna_"><img src="https://img.shields.io/twitter/follow/espadrine.svg?style=for-the-badge&label=Follow" alt="Twitter Follow"></a><!--
+    --><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34"><img src="https://img.shields.io/badge/Donate-PayPal-547ab8.svg?style=for-the-badge" alt="donate" title="Donate with PayPal" /></a><!--
+    --><a href="https://www.patreon.com/bePatron?u=9336537"><img src="https://i.imgur.com/05PzBRU.png" alt="patreon badge" title="Become a Patron"></a>
+  </p>
 
+  <p>
+    <a href="https://discord.gg/zdt5yQt"><img src="https://canary.discordapp.com/api/guilds/246821351585742851/widget.png?style=banner2" alt="Join Discord Server"/></a>
+  </p>  
+</div>
 
-
-
-## Dexa
+## About
 
 Dexa is a skill for Amazon Alexa to easily find data from in the PokeDex. There are various things you can ask Alexa to find:
 
