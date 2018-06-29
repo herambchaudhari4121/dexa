@@ -123,7 +123,7 @@ const dexIntent = function (req, res) {
     ${pokeData.evos.length ? `It evolves into ${pokeData.evos.join(' and ')}.` : ''}
     ${pokeData.species} gets the abilities ${pokeData.abilities.join(' and ')}
     and it is typically ${pokeData.height} meters tall and weighs about ${pokeData.weight} kilograms.
-    ${pokeData.species} appears as roughly ${pokeData.genders}.
+    ${pokeData.genders !== 'None' ? `${pokeData.species} appears as roughly ${pokeData.genders}` : `${pokeData.species} has no gender`}.
     `;
 
     return res
