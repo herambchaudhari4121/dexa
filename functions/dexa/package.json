@@ -23,10 +23,10 @@
   },
   "scripts": {
     "deploy": "cd ../../ && apex deploy && cd functions/dexa",
-    "docs": "./node_modules/.bin/jsdoc2md --template ../../docs/template.hbs --files intents/*.js | tee ../../docs/docs.md > NUL",
-    "docs:json": "./node_modules/.bin/jsdoc2md --json --files intents/*.js > ../../../favna.xyz/public/dist/dexadocs.json",
-    "lint": "./node_modules/.bin/eslint **/*.js",
-    "lint:fix": "./node_modules/.bin/eslint --fix **/*.js",
+    "docs": "jsdoc2md --template ../../docs/template.hbs --files intents/*.js | tee ../../docs/docs.md > NUL",
+    "docs:json": "jsdoc2md --json --files intents/*.js > ../../../favna.xyz/public/dist/dexadocs.json",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js",
     "skill": "node skill.js",
     "test": "yarn lint && mocha test"
   },

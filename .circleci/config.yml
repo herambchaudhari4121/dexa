@@ -45,7 +45,7 @@ jobs:
           command: sudo npm install -g node-pre-gyp node-gyp
       - run:
           name: Install dexa dependencies
-          command: cd functions/dexa && yarn install
+          command: cd functions/dexa && yarn
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ .Branch }}-{{ checksum "functions/dexa/yarn.lock" }}
