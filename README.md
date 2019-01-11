@@ -1,7 +1,7 @@
 <div align="center">
   <p>
     <h1> Dexa </h1>
-    <a href="https://favna.xyz/dexa"><img src="https://favna.xyz/images/svgs/dexa.svg" height="200" alt="Dexa"/></a>
+    <a href="https://favna.xyz/dexa"><img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/website-project-icons/dexa.png" height="200" alt="Dexa"/></a>
   </p>
 
   <p>
@@ -16,9 +16,9 @@
     --><a href="https://www.patreon.com/bePatron?u=9336537"><img src="https://i.imgur.com/05PzBRU.png" alt="patreon badge" title="Become a Patron"></a>
   </p>
 
-  <p>
-    <a href="https://discord.gg/zdt5yQt"><img src="https://canary.discordapp.com/api/guilds/246821351585742851/widget.png?style=banner2" alt="Join Discord Server"/></a>
-  </p>  
+<p>
+  <a href="https://favna.xyz/redirect/server"><img src="https://discordapp.com/api/guilds/512303595966824458/widget.png?style=banner2" alt="Join Discord Server"/></a>
+</p>
 </div>
 
 ## About
@@ -41,13 +41,13 @@ Dexa is a skill for Amazon Alexa to easily find data from in the PokeDex. There 
 
 ## Buy me a donut
 
-This skill is open source and always will be, even if I don't get donations. That said, I know there are people out there that may still want to donate just to show their appreciation so this is for you guys. Thanks in advance!
+This project is open source and always will be, even if I don't get donations. That said, I know there are people out there that may still want to donate just to show their appreciation so this is for you guys. Thanks in advance!
 
 I accept donations through PayPal, BitCoin, Ethereum and LiteCoin. You can use the buttons below to donate through your method of choice
 
 |Donate With|QR|Address|
 |:---:|:---:|:---:|
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34"><img src="https://favna.xyz/images/ribbonhost/paypaldonate.png"></a>|<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34"><img src="https://favna.xyz/images/ribbonhost/paypalqr.png" width="128"></a>|[Donate with PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)|
-<img src="https://favna.xyz/images/ribbonhost/bitcoindonate.png">|<img src="https://favna.xyz/images/ribbonhost/bitcoinqr.png" width="128">|<a href="bitcoin:1E643TNif2MTh75rugepmXuq35Tck4TnE5?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">1E643TNif2MTh75rugepmXuq35Tck4TnE5</a>|
-<img src="https://favna.xyz/images/ribbonhost/ethereumdonate.png">|<img src="https://favna.xyz/images/ribbonhost/ethereumqr.png" width="128">|<a href="ethereum:0xF653F666903cd8739030D2721bF01095896F5D6E?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">0xF653F666903cd8739030D2721bF01095896F5D6E</a>|
-<img src="https://favna.xyz/images/ribbonhost/litecoindonate.png">|<img src="https://favna.xyz/images/ribbonhost/litecoinqr.png" width="128">|<a href="litecoin:LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6</a>|
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34"><img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/paypaldonate.png"></a>|<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34"><img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/paypalqr.png" width="128"></a>|[Donate with PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)|
+<img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/bitcoindonate.png">|<img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/bitcoinqr.png" width="128">|<a href="bitcoin:1E643TNif2MTh75rugepmXuq35Tck4TnE5?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">1E643TNif2MTh75rugepmXuq35Tck4TnE5</a>|
+<img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/ethereumdonate.png">|<img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/ethereumqr.png" width="128">|<a href="ethereum:0xF653F666903cd8739030D2721bF01095896F5D6E?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">0xF653F666903cd8739030D2721bF01095896F5D6E</a>|
+<img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/litecoindonate.png">|<img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/litecoinqr.png" width="128">|<a href="litecoin:LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6?amount=0.01&label=Favna%27%20Ribbon%20Discord%20Bot">LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6</a>|
