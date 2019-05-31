@@ -29,7 +29,7 @@ jobs:
   node-v8:
     docker:
       - image: circleci/node:8
-    working_directory: ~/favware-project-{{ epoch }}
+    working_directory: ~/favware-project-{{ .Revision }}-{{ .BuildNum }}-{{ .CheckoutKey }}-{{ epoch }}
     steps:
       - nodejs
   node-v10:
