@@ -1,12 +1,11 @@
 <div align="center">
   <p>
     <h1> Dexa </h1>
-    <a href="https://favna.xyz/dexa"><img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/website-project-icons/dexa.png" height="200" alt="Dexa"/></a>
+    <a href="https://favware.tech/dexa"><img src="https://storage.googleapis.com/data-sunlight-146313.appspot.com/website-project-icons/dexa.png" height="200" alt="Dexa"/></a>
   </p>
 
   <p>
-    <a href="https://depfu.com/repos/Favna/Dexa"><img src="https://img.shields.io/depfu/Favna/Dexa.svg?style=for-the-badge" alt="Depfu" /></a><!--
-    --><a href="https://circleci.com/gh/Favna/Dexa/tree/master"><img src="https://img.shields.io/circleci/project/github/Favna/Dexa.svg?style=for-the-badge" alt="CircleCI"></a><!--
+    <a href="https://circleci.com/gh/Favna/Dexa/tree/master"><img src="https://img.shields.io/circleci/project/github/Favna/Dexa.svg?style=for-the-badge" alt="CircleCI"></a><!--
     --><a href="https://github.com/Favna/Dexa/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/favna/Dexa.svg?style=for-the-badge" alt="License"></a>
   </p>
 
@@ -17,7 +16,7 @@
   </p>
 
 <p>
-  <a href="https://favna.xyz/redirect/server"><img src="https://discordapp.com/api/guilds/512303595966824458/widget.png?style=banner2" alt="Join Discord Server"/></a>
+  <a href="https://favware.tech/redirect/server"><img src="https://discordapp.com/api/guilds/512303595966824458/widget.png?style=banner2" alt="Join Discord Server"/></a>
 </p>
 </div>
 
