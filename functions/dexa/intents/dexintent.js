@@ -132,7 +132,7 @@ const dexIntent = function (req, res) {
         type: 'Standard',
         title: `Dexa Pokemon Data for ${pokeData.species}`,
         text: final,
-        image: {largeImageUrl: `https://favna.xyz/images/ribbonhost/pokesprites/large/${pokeData.species.replace(/ /g, '').toLowerCase()}.png`}
+        image: {largeImageUrl: `https://storage.googleapis.com/data-sunlight-146313.appspot.com/ribbon/pokesprites/large/${pokeData.species.replace(/ /g, '').toLowerCase()}.png`}
       });
   } catch (err) {
     console.error(err);

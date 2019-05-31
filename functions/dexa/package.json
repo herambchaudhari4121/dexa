@@ -24,7 +24,7 @@
   "scripts": {
     "deploy": "cd ../../ && apex deploy && cd functions/dexa",
     "docs": "node_modules/.bin/jsdoc2md --template ../../docs/template.hbs --files intents/*.js | tee ../../docs/docs.md > NUL",
-    "docs:json": "node_modules/.bin/jsdoc2md --json --files intents/*.js > ../../../favna.xyz/public/dist/dexadocs.json",
+    "docs:json": "node_modules/.bin/jsdoc2md --json --files intents/*.js > ../../../@favware-website/src/assets/docs/dexa.json",
     "lint": "node_modules/.bin/eslint --fix intents/*.js *.js",
     "skill": "node skill.js",
     "test": "mocha test"
