@@ -1,0 +1,9 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "functions/dexa/package.json"
+      ]
+    }
+  }
+}
