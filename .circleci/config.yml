@@ -10,7 +10,7 @@ commands:
             - yarn-packages-{{ .Branch }}-{{ checksum "functions/dexa/yarn.lock" }}
       - run:
           name: Install Dependencies
-          command: cd functions/dexa && yarn install --frozen-lockfile
+          command: cd functions/dexa && yarn install
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ .Branch }}-{{ checksum "functions/dexa/yarn.lock" }}
