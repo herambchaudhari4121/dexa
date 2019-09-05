@@ -22,9 +22,6 @@
 
 ## About
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/favware/Dexa.svg)](https://greenkeeper.io/)
-
-
 Dexa is a skill for Amazon Alexa to easily find data from in the PokeDex. There are various things you can ask Alexa to find:
 
 - Pokemon
