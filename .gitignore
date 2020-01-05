@@ -28,11 +28,4 @@ coverage/
 *.iml
 
 # Transpiled files
-functions/
-
-# Apex Settings File
-project.json
-
-# TODO: Remove this section
-# Dev-time files
-legacy/
+dist/

@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../functions/dexa",
+    "outDir": "../dist",
     "composite": true
   }
 }
