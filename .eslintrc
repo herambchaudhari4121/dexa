@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "@favware"
+  ],
+  "rules": {
+    "array-bracket-spacing": "off",
+    "eol-last":"off",
+    "comma-dangle":"off",
+    "no-useless-escape":"off",
+    "quotes":"off",
+    "no-invalid-this":"off",
+    "object-curly-newline":"off",
+    "new-cap":"off"
+  }
+}
