@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/favware/dexa/compare/v2.0.1...v2.0.2) (2020-01-05)
+
+### Bug Fixes
+
+- cover LaunchIntent & ErrorHandler in test and cleanup Launch response ([8d3fb40](https://github.com/favware/dexa/commit/8d3fb40955ac1d4cbb1128869902796260946f9a))
+
 ### [2.0.1](https://github.com/favware/dexa/compare/v2.0.0...v2.0.1) (2020-01-05)
 
 ### Bug Fixes
