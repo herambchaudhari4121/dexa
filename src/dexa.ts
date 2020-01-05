@@ -295,7 +295,7 @@ export default class extends AlexaApp {
         'Welcome to Dexa, your one stop place for PokéDex information.',
         'You can start browsing right away by giving me a command, or respond with "help" to learn all my commands.',
         'If you want to stop Dexa, then respond with "Alexa Stop".'
-      ].join('');
+      ].join(' ');
 
       const reprompt = 'I did not quite catch that, could you repeat it?';
 
@@ -320,7 +320,7 @@ export default class extends AlexaApp {
 
   private throwQueryErr(res: Response, req: Request, slot: SLOTS) {
     const prompt = [
-      'Woops, I could not resolve that query.',
+      'I am sorry but I could not resolve that query.',
       req.slot(slot) ? `I think you said ${removeDiacritics(req.slot(slot))}? ` : '',
       'Maybe try again, or respond with "Alexa Cancel" if you want to stop.'
     ].join(' ');
