@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/favware/dexa/compare/v2.0.0...v2.0.1) (2020-01-05)
+
+### Bug Fixes
+
+- fixed special condition evolution parsing ([ca111e4](https://github.com/favware/dexa/commit/ca111e4e6ccc66cf26fc12d592aa33e158ae8263))
+
 ## 2.0.0 (2020-01-05)
 
 ### ⚠ BREAKING CHANGES
