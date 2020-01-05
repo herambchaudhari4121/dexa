@@ -44,6 +44,45 @@ describe('DexIntent', () => {
     `);
   });
 
+  test('GIVEN Pokémon with complicated evolutions THEN returns data with varying evos', async () => {
+    expect.assertions(2);
+
+    const res = await fetch(SERVER)
+      .post('/dexa')
+      .send({
+        request: {
+          type: 'IntentRequest',
+          intent: {
+            name: 'DexIntent',
+            slots: {
+              POKEMON: {
+                name: 'POKEMON',
+                value: 'eevee'
+              }
+            }
+          }
+        }
+      });
+
+    const { ssml } = res.body.response.outputSpeech;
+
+    expect(res.status).toBe(200);
+    expect(ssml).toBe(oneLine`
+        <speak>Eevee, number 133, Thanks to its unstable genetic makeup, this special Pokémon conceals many different possible evolutions.
+          It is Normal type. It evolves into
+          vaporeon (Special Condition: use Water Stone) and
+          jolteon (Special Condition: use Thunder Stone) and
+          flareon (Special Condition: use Fire Stone) and
+          espeon (Special Condition: Level up during Daytime with High Friendship) and
+          umbreon (Special Condition: Level up during Nighttime with High Friendship) and
+          leafeon (Special Condition: use Leaf Stone) and
+          glaceon (Special Condition: use Ice Stone) and
+          sylveon (Special Condition: Level up while having high Affection and knowing a Fairy type move).
+          Eevee is typically 0.3 meters tall and weighs about 6.5 kilograms.
+          It has a gender ratio of 87.5% male and 12.5% female.</speak>
+    `);
+  });
+
   test('GIVEN Pokémon with pre-evolution and evolution THEN returns data with prevo and evo', async () => {
     expect.assertions(2);
 

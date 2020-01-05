@@ -123,14 +123,24 @@ export const parsePrevos = (data: DexDetails) => {
 
 export const parseEvos = (data: DexDetails) => {
   const evos: string[] = [];
-  const hasEvoByLevel = (evolutionMethod: string) => Number(evolutionMethod);
+  const hasEvoByLevel = (evolutionMethod: string | null | undefined) => Number(evolutionMethod);
 
   data.evolutions!.forEach(evo => {
-    evos.push(`${evo.species} ${hasEvoByLevel ? `(Level: ${evo.evolutionLevel})` : `(Special Condition: ${evo.evolutionLevel})`}`);
+    evos.push(
+      [
+        `${evo.species}`,
+        `${hasEvoByLevel(evo.evolutionLevel) ? `(Level: ${evo.evolutionLevel})` : `(Special Condition: ${evo.evolutionLevel})`}`
+      ].join(' ')
+    );
 
     if (evo.evolutions) {
       evo.evolutions.forEach(evvo => {
-        evos.push(`${evvo.species} ${hasEvoByLevel ? `(Level: ${evvo.evolutionLevel})` : `(Special Condition: ${evvo.evolutionLevel})`}`);
+        evos.push(
+          [
+            `${evvo.species}`,
+            `${hasEvoByLevel(evvo.evolutionLevel) ? `(Level: ${evvo.evolutionLevel})` : `(Special Condition: ${evvo.evolutionLevel})`}`
+          ].join(' ')
+        );
       });
     }
   });
