@@ -118,11 +118,14 @@ export default class extends AlexaApp {
         .filter(this.dFilter)
         .join(' ');
 
-      return res.say(text).card({
-        type: 'Simple',
-        title: `Dex Pokémon Data for ${titleCaseName}`,
-        content: text
-      });
+      return res
+        .say(text)
+        .card({
+          type: 'Simple',
+          title: `Dex Pokémon Data for ${titleCaseName}`,
+          content: text
+        })
+        .shouldEndSession(false);
     } catch {
       return this.throwQueryErr(res, req, SLOTS.POKEMON);
     }
@@ -151,11 +154,14 @@ export default class extends AlexaApp {
         .filter(this.dFilter)
         .join(' ');
 
-      return res.say(text).card({
-        type: 'Simple',
-        title: `Dex Move Data for ${titleCaseName}`,
-        content: text
-      });
+      return res
+        .say(text)
+        .card({
+          type: 'Simple',
+          title: `Dex Move Data for ${titleCaseName}`,
+          content: text
+        })
+        .shouldEndSession(false);
     } catch {
       return this.throwQueryErr(res, req, SLOTS.MOVE);
     }
@@ -179,11 +185,14 @@ export default class extends AlexaApp {
         .join(' ')
         .replace(/([0-9]{1}(\.[0-9]){0,1})x/gm, '$1 times');
 
-      return res.say(text).card({
-        type: 'Simple',
-        title: `Dex Item Data for ${titleCaseName}`,
-        content: text
-      });
+      return res
+        .say(text)
+        .card({
+          type: 'Simple',
+          title: `Dex Item Data for ${titleCaseName}`,
+          content: text
+        })
+        .shouldEndSession(false);
     } catch {
       return this.throwQueryErr(res, req, SLOTS.ITEM);
     }
@@ -201,11 +210,14 @@ export default class extends AlexaApp {
 
       const text = `${titleCaseName}, ${abilityData.desc || abilityData.shortDesc}`;
 
-      return res.say(text).card({
-        type: 'Simple',
-        title: `Dex Ability Data for ${titleCaseName}`,
-        content: text
-      });
+      return res
+        .say(text)
+        .card({
+          type: 'Simple',
+          title: `Dex Ability Data for ${titleCaseName}`,
+          content: text
+        })
+        .shouldEndSession(false);
     } catch {
       return this.throwQueryErr(res, req, SLOTS.ABILITY);
     }
@@ -269,7 +281,7 @@ export default class extends AlexaApp {
       (_req, res) => {
         const cancelOutput = 'No problem. Request cancelled.';
 
-        res.say(cancelOutput);
+        res.say(cancelOutput).shouldEndSession(true);
       }
     );
   }
@@ -284,7 +296,7 @@ export default class extends AlexaApp {
       (_req, res) => {
         const stopOutput = "Don't you worry, I'll be back";
 
-        res.say(stopOutput);
+        res.say(stopOutput).shouldEndSession(true);
       }
     );
   }
@@ -311,11 +323,9 @@ export default class extends AlexaApp {
   }
 
   private throwSystemErr(res: Response) {
-    return res.say(
-      ['Something went awfully wrong browsing my dataset.', 'Please use "Alexa ask Dexa Browser for help" if you are unsure how to use Dexa'].join(
-        ' '
-      )
-    );
+    return res
+      .say('Something went awfully wrong browsing my dataset. Please use "Alexa ask Dexa Browser for help" if you are unsure how to use Dexa')
+      .shouldEndSession(false);
   }
 
   private throwQueryErr(res: Response, req: Request, slot: SLOTS) {
