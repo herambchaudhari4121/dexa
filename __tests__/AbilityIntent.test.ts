@@ -1,16 +1,8 @@
 import { oneLine } from 'common-tags';
 import fetch from 'supertest';
-import { SERVER, setup, teardown } from './utils';
+import { SERVER } from './utils';
 
 describe('AbilityIntent', () => {
-  beforeAll(() => {
-    setup();
-  });
-
-  afterAll(() => {
-    teardown();
-  });
-
   test('GIVEN Ability THEN returns data', async () => {
     expect.assertions(2);
 

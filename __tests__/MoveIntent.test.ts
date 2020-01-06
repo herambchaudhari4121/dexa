@@ -1,16 +1,8 @@
 import { oneLine } from 'common-tags';
 import fetch from 'supertest';
-import { SERVER, setup, teardown } from './utils';
+import { SERVER } from './utils';
 
 describe('MoveIntent', () => {
-  beforeAll(() => {
-    setup();
-  });
-
-  afterAll(() => {
-    teardown();
-  });
-
   test('GIVEN Normal move THEN returns regular data', async () => {
     expect.assertions(2);
 

@@ -1,16 +1,8 @@
 import { oneLine } from 'common-tags';
 import fetch from 'supertest';
-import { SERVER, setup, teardown } from './utils';
+import { SERVER } from './utils';
 
 describe('LaunchIntent', () => {
-  beforeAll(() => {
-    setup();
-  });
-
-  afterAll(() => {
-    teardown();
-  });
-
   test('GIVEN Request to Launch THEN returns launch blurb', async () => {
     expect.assertions(2);
 

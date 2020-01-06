@@ -1,4 +1,5 @@
 import { Abilities, DexDetails, GenderEntry, Items, MoveEntry, Moves, Pokemon, Query } from '@favware/graphql-pokemon';
+import { toTitleCase } from '@klasa/utils';
 
 const AbilityFragment = `
 fragment ability on AbilityEntry {
@@ -106,14 +107,24 @@ ${MoveFragment}
 
 export const parsePrevos = (data: DexDetails) => {
   const prevos: string[] = [];
-  const hasEvoByLevel = (evolutionMethod: string) => Number(evolutionMethod);
+  const hasEvoByLevel = (evolutionMethod: string | null | undefined) => Number(evolutionMethod);
 
   data.preevolutions!.forEach(pr => {
-    prevos.push(`${pr.species} ${hasEvoByLevel ? `(Level: ${data.evolutionLevel})` : `(Special Condition: ${data.evolutionLevel})`}`);
+    prevos.push(
+      [
+        `${toTitleCase(pr.species)}`,
+        `${hasEvoByLevel(data.evolutionLevel) ? `(Level: ${data.evolutionLevel})` : `(Special Condition: ${data.evolutionLevel})`}`
+      ].join(' ')
+    );
 
     if (pr.preevolutions) {
       pr.preevolutions.forEach(prr => {
-        prevos.push(`${prr.species} ${hasEvoByLevel ? `(Level: ${pr.evolutionLevel})` : `(Special Condition: ${pr.evolutionLevel})`}`);
+        prevos.push(
+          [
+            `${toTitleCase(prr.species)}`,
+            `${hasEvoByLevel(pr.evolutionLevel) ? `(Level: ${pr.evolutionLevel})` : `(Special Condition: ${pr.evolutionLevel})`}`
+          ].join(' ')
+        );
       });
     }
   });
@@ -128,7 +139,7 @@ export const parseEvos = (data: DexDetails) => {
   data.evolutions!.forEach(evo => {
     evos.push(
       [
-        `${evo.species}`,
+        `${toTitleCase(evo.species)}`,
         `${hasEvoByLevel(evo.evolutionLevel) ? `(Level: ${evo.evolutionLevel})` : `(Special Condition: ${evo.evolutionLevel})`}`
       ].join(' ')
     );
@@ -137,7 +148,7 @@ export const parseEvos = (data: DexDetails) => {
       evo.evolutions.forEach(evvo => {
         evos.push(
           [
-            `${evvo.species}`,
+            `${toTitleCase(evvo.species)}`,
             `${hasEvoByLevel(evvo.evolutionLevel) ? `(Level: ${evvo.evolutionLevel})` : `(Special Condition: ${evvo.evolutionLevel})`}`
           ].join(' ')
         );

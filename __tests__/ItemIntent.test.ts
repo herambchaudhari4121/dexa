@@ -1,16 +1,8 @@
 import { oneLine } from 'common-tags';
 import fetch from 'supertest';
-import { SERVER, setup, teardown } from './utils';
+import { SERVER } from './utils';
 
 describe('ItemIntent', () => {
-  beforeAll(() => {
-    setup();
-  });
-
-  afterAll(() => {
-    teardown();
-  });
-
   test('GIVEN Item in Generation 8 THEN returns data', async () => {
     expect.assertions(2);
 
