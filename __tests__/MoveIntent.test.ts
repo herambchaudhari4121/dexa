@@ -40,7 +40,7 @@ describe('MoveIntent', () => {
         Dragon Claw has a base power of 80 and it has 15 pp.
         Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
         In battles with multiple Pokémon on each side it will have an effect on regular targets.
-        Dragon Claw is available in the Generaton 8 games.</speak>
+        Dragon Claw is available in the generation 8 games.</speak>
   `);
   });
 
@@ -73,7 +73,7 @@ describe('MoveIntent', () => {
       Dragon Dance is a status move and it has 20 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on the user.
-      Dragon Dance is available in the Generaton 8 games.</speak>
+      Dragon Dance is available in the generation 8 games.</speak>
   `);
   });
 
@@ -106,7 +106,7 @@ describe('MoveIntent', () => {
       Pika Papow base power is calculated based on (happiness * 10) / 25 and it has 20 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on regular targets.
-      Pika Papow is available in the Generaton 8 games.</speak>
+      Pika Papow is available in the generation 8 games.</speak>
   `);
   });
 
@@ -206,7 +206,7 @@ describe('MoveIntent', () => {
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on all adjacent foes.
       This move is a G MAX move and can only be used by G Max Pikachu.
-      G-max Volt Crash is available in the Generaton 8 games.</speak>
+      G-max Volt Crash is available in the generation 8 games.</speak>
   `);
   });
 });

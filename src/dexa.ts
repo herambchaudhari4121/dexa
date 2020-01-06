@@ -149,7 +149,7 @@ export default class extends AlexaApp {
         `In battles with multiple Pokémon on each side it will have an effect on ${c.parseMoveTarget(moveData.target)}.`,
         moveData.isZ ? `This move is a Z Move and requires the Z-Crystal ${moveData.isZ}.` : null,
         moveData.isGMax ? `This move is a G MAX move and can only be used by G Max ${moveData.isGMax}.` : null,
-        moveData.isNonstandard !== 'Past' ? `${titleCaseName} is available in the Generaton 8 games.` : null
+        moveData.isNonstandard !== 'Past' ? `${titleCaseName} is available in the generation 8 games.` : null
       ]
         .filter(this.dFilter)
         .join(' ');
