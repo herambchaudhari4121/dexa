@@ -45,7 +45,11 @@ export default class extends AlexaApp {
       INTENT_NAMES.DEX_INTENT,
       {
         slots: { [SLOTS.POKEMON]: SLOTS.POKEMON },
-        utterances: [`data on {-|${SLOTS.POKEMON}}`, `pokemon data for {-|${SLOTS.POKEMON}}`, `pokemon data {-|${SLOTS.POKEMON}}`]
+        utterances: [
+          `data on {-|${SLOTS.POKEMON}}`,
+          `pokemon data for {-|${SLOTS.POKEMON}}`,
+          `pokemon data {-|${SLOTS.POKEMON}}`
+        ]
       },
       (req, res) => {
         const pokemon = removeDiacritics(req.slot(SLOTS.POKEMON));
@@ -96,11 +100,13 @@ export default class extends AlexaApp {
 
   public async DexIntent(res: Response, req: Request, pokemon: string) {
     try {
-      const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getPokemonDetailsByFuzzy'>> = await this.apollo.query({
-        query: gql`
-          ${c.getPokemonDetailsByFuzzy(pokemon)}
-        `
-      });
+      const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getPokemonDetailsByFuzzy'>> = await this.apollo.query(
+        {
+          query: gql`
+            ${c.getPokemonDetailsByFuzzy(pokemon)}
+          `
+        }
+      );
       const { getPokemonDetailsByFuzzy: pokeData } = data;
       const titleCaseName = toTitleCase(pokeData.species);
 
@@ -146,7 +152,9 @@ export default class extends AlexaApp {
         `${titleCaseName} is a${this.dElectricOrIce.test(moveData.type) ? 'n' : ''} ${moveData.type} type move.`,
         `${titleCaseName} ${c.parseMoveBasePower(moveData.basePower, moveData.category)} and it has ${moveData.pp} pp.`,
         `Under normal conditions this move will have a priority of ${moveData.priority} and an accuracy of ${moveData.accuracy}%.`,
-        `In battles with multiple Pokémon on each side it will have an effect on ${c.parseMoveTarget(moveData.target)}.`,
+        `In battles with multiple Pokémon on each side it will have an effect on ${c.parseMoveTarget(
+          moveData.target
+        )}.`,
         moveData.isZ ? `This move is a Z Move and requires the Z-Crystal ${moveData.isZ}.` : null,
         moveData.isGMax ? `This move is a G MAX move and can only be used by G Max ${moveData.isGMax}.` : null,
         moveData.isNonstandard !== 'Past' ? `${titleCaseName} is available in the generation 8 games.` : null
@@ -200,11 +208,13 @@ export default class extends AlexaApp {
 
   private async AbilityIntent(res: Response, req: Request, ability: string) {
     try {
-      const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getAbilityDetailsByFuzzy'>> = await this.apollo.query({
-        query: gql`
-          ${c.getAbilityDetailsByFuzzy(ability)}
-        `
-      });
+      const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getAbilityDetailsByFuzzy'>> = await this.apollo.query(
+        {
+          query: gql`
+            ${c.getAbilityDetailsByFuzzy(ability)}
+          `
+        }
+      );
       const { getAbilityDetailsByFuzzy: abilityData } = data;
       const titleCaseName = toTitleCase(abilityData.name);
 
@@ -228,13 +238,23 @@ export default class extends AlexaApp {
       try {
         switch (req.data.request.intent.name) {
           case INTENT_NAMES.DEX_INTENT:
-            return res.say(`I couldn't find a Pokémon for ${req.slot(SLOTS.POKEMON)}. Are you sure you spelled that correctly?`);
+            return res.say(
+              `I couldn't find a Pokémon for ${req.slot(SLOTS.POKEMON)}. Are you sure you spelled that correctly?`
+            );
           case INTENT_NAMES.ABILITY_INTENT:
-            return res.say(`I couldn't find an Ability for ${req.slot(SLOTS.ABILITY)}. Are you sure you spelled that correctly?`);
+            return res.say(
+              `I couldn't find an Ability for ${req.slot(SLOTS.ABILITY)}. Are you sure you spelled that correctly?`
+            );
           case INTENT_NAMES.MOVE_INTENT:
-            return res.say(`I couldn't find an Move for ${req.slot(SLOTS.MOVE)}. I only support moves that have are used inside battles`);
+            return res.say(
+              `I couldn't find an Move for ${req.slot(
+                SLOTS.MOVE
+              )}. I only support moves that have are used inside battles`
+            );
           case INTENT_NAMES.ITEM_INTENT:
-            return res.say(`I couldn't find an Item for ${req.slot(SLOTS.ITEM)}. Is that really an item that can be used in battle?`);
+            return res.say(
+              `I couldn't find an Item for ${req.slot(SLOTS.ITEM)}. Is that really an item that can be used in battle?`
+            );
           default:
             return this.throwSystemErr(res);
         }
@@ -324,7 +344,9 @@ export default class extends AlexaApp {
 
   private throwSystemErr(res: Response) {
     return res
-      .say('Something went awfully wrong browsing my dataset. Please use "Alexa ask Dexa Browser for help" if you are unsure how to use Dexa')
+      .say(
+        'Something went awfully wrong browsing my dataset. Please use "Alexa ask Dexa Browser for help" if you are unsure how to use Dexa'
+      )
       .shouldEndSession(false);
   }
 
