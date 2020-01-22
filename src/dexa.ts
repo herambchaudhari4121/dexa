@@ -1,7 +1,7 @@
 import { toTitleCase } from '@klasa/utils';
 import { app as AlexaApp, request as Request, response as Response } from 'alexa-app';
 import ApolloClient, { ApolloQueryResult } from 'apollo-boost';
-import { remove as removeDiacritics } from 'confusables';
+import removeDiacritics from 'confusables';
 import 'cross-fetch/polyfill';
 import gql from 'graphql-tag';
 import * as c from './constants';

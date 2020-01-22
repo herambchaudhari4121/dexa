@@ -29,7 +29,7 @@
     "@klasa/utils": "^0.0.4",
     "alexa-app": "^4.2.3",
     "apollo-boost": "^0.4.7",
-    "confusables": "^0.3.3",
+    "confusables": "^1.0.0",
     "cross-fetch": "^3.0.4",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1"
