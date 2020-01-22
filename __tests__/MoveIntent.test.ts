@@ -191,8 +191,8 @@ describe('MoveIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-    <speak>G-max Volt Crash, Paralyzes foe(s).
-      BP scales with base move.
+    <speak>G-max Volt Crash, Paralyzes opponents.
+      Base Power scales with the base move's Base Power.
       G-max Volt Crash is an Electric type move.
       G-max Volt Crash has a base power of 10 and it has 10 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
