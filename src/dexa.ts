@@ -23,7 +23,7 @@ const enum INTENT_NAMES {
 export default class extends AlexaApp {
   private apollo: ApolloClient<unknown>;
   private DEV = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test';
-  private dFilter = this.removeNullAndUndefined.bind(this);
+  private dFilter = this.removeNullAndUndefined.bind(this); // eslint-disable-line no-invalid-this
   private dElectricOrIce = /(electric|ice)/i;
 
   public constructor() {

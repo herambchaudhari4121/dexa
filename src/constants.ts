@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { Abilities, DexDetails, GenderEntry, Items, MoveEntry, Moves, Pokemon, Query } from '@favware/graphql-pokemon';
 import { toTitleCase } from '@klasa/utils';
 
