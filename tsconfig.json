@@ -5,6 +5,7 @@
     "declarationMap": false,
     "sourceMap": false,
     "removeComments": true,
-    "typeRoots": ["typings", "node_modules/@types"]
+    "typeRoots": ["typings", "node_modules/@types"],
+    "importHelpers": false
   }
 }

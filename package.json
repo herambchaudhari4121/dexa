@@ -4,7 +4,8 @@
   "description": "Amazing pokedex skill for Alexa",
   "author": "@favware",
   "license": "MIT",
-  "main": "functions/dexa/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "homepage": "https://favware.tech/dexa",
   "private": true,
   "scripts": {
