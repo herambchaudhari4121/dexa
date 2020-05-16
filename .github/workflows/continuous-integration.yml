@@ -46,8 +46,11 @@ jobs:
           key: ${{ runner.os }}-12-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
         run: yarn
-      - name: Run Jest
-        run: yarn test
+      - name: Run graphql-pokemon and tests
+        run: |
+          docker container run --name graphql-pokemon -d --expose 8080 -p 4000:8080 -it favware/graphql-pokemon:latest \
+          && sleep 5 \
+          && yarn test
 
   Building:
     name: Compiling TypeScript
