@@ -1,4 +1,4 @@
-import { DexDetails, GenderEntry, MoveEntry, Query } from '@favware/graphql-pokemon';
+import { DexDetails, GenderEntry, MoveEntry } from '@favware/graphql-pokemon';
 import { toTitleCase } from '@klasa/utils';
 import gql from 'graphql-tag';
 
@@ -120,11 +120,7 @@ export const parsePrevos = (data: DexDetails) => {
     prevos.push(
       [
         `${toTitleCase(pr.species)}`,
-        `${
-          hasEvoByLevel(data.evolutionLevel)
-            ? `(Level: ${data.evolutionLevel})`
-            : `(Special Condition: ${data.evolutionLevel})`
-        }`
+        `${hasEvoByLevel(data.evolutionLevel) ? `(Level: ${data.evolutionLevel})` : `(Special Condition: ${data.evolutionLevel})`}`
       ].join(' ')
     );
 
@@ -133,11 +129,7 @@ export const parsePrevos = (data: DexDetails) => {
         prevos.push(
           [
             `${toTitleCase(prr.species)}`,
-            `${
-              hasEvoByLevel(pr.evolutionLevel)
-                ? `(Level: ${pr.evolutionLevel})`
-                : `(Special Condition: ${pr.evolutionLevel})`
-            }`
+            `${hasEvoByLevel(pr.evolutionLevel) ? `(Level: ${pr.evolutionLevel})` : `(Special Condition: ${pr.evolutionLevel})`}`
           ].join(' ')
         );
       });
@@ -157,11 +149,7 @@ export const parseEvos = (data: DexDetails) => {
     evos.push(
       [
         `${toTitleCase(evo.species)}`,
-        `${
-          hasEvoByLevel(evo.evolutionLevel)
-            ? `(Level: ${evo.evolutionLevel})`
-            : `(Special Condition: ${evo.evolutionLevel})`
-        }`
+        `${hasEvoByLevel(evo.evolutionLevel) ? `(Level: ${evo.evolutionLevel})` : `(Special Condition: ${evo.evolutionLevel})`}`
       ].join(' ')
     );
 
@@ -170,11 +158,7 @@ export const parseEvos = (data: DexDetails) => {
         evos.push(
           [
             `${toTitleCase(evvo.species)}`,
-            `${
-              hasEvoByLevel(evvo.evolutionLevel)
-                ? `(Level: ${evvo.evolutionLevel})`
-                : `(Special Condition: ${evvo.evolutionLevel})`
-            }`
+            `${hasEvoByLevel(evvo.evolutionLevel) ? `(Level: ${evvo.evolutionLevel})` : `(Special Condition: ${evvo.evolutionLevel})`}`
           ].join(' ')
         );
       });
@@ -233,5 +217,3 @@ export const parseMoveTarget = (target: MoveEntry['target']) => {
       return 'any Pokémon';
   }
 };
-
-export type GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> = Record<K, Omit<Query[K], '__typename'>>;
