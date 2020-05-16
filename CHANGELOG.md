@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/favware/dexa/compare/v2.0.3...v2.1.0) (2020-05-16)
+
+### Features
+
+- cleanup all queries to use proper graphql syntax ([ef61373](https://github.com/favware/dexa/commit/ef6137330b1b4cde5c9a7c98c80d102671aaab03))
+
 ### [2.0.3](https://github.com/favware/dexa/compare/v2.0.2...v2.0.3) (2020-02-02)
 
 ### Bug Fixes
