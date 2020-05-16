@@ -1,4 +1,4 @@
-name: Code Quality
+name: Continuous Integration
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
   pull_request:
 
 jobs:
-  ESLint:
-    name: ESLint
+  Linting:
+    name: Linting
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
@@ -27,11 +27,30 @@ jobs:
         run: yarn
       - name: Run ESLint
         uses: icrawl/action-eslint@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  Typescript:
-    name: Typescript
+  Testing:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+      - name: Use Node.js v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Restore CI Cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-12-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn
+      - name: Run Jest
+        run: yarn test
+
+  Building:
+    name: Compiling TypeScript
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
@@ -45,10 +64,10 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.os }}-10-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-12-${{ hashFiles('**/yarn.lock') }}
       - name: Install Deps
         run: yarn
-      - name: Build Source
+      - name: Compile TypeScript
         uses: icrawl/action-tsc@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          build: src

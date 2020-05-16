@@ -126,7 +126,7 @@ describe('MoveIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-    <speak>Return, Max 102 power at maximum Happiness.
+    <speak>Return, Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1.
       Return is a Normal type move.
       Return has a base power of 0 and it has 20 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
@@ -191,14 +191,14 @@ describe('MoveIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-    <speak>G-max Volt Crash, Paralyzes opponents.
-      Base Power scales with the base move's Base Power.
-      G-max Volt Crash is an Electric type move.
+      <speak>G-max Volt Crash, Power is equal to the base move's Max Move power.
+      If this move is successful, each Pokemon on the opposing side becomes paralyzed,
+      even if they have a substitute. G-max Volt Crash is an Electric type move.
       G-max Volt Crash has a base power of 10 and it has 10 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
-      In battles with multiple Pokémon on each side it will have an effect on all adjacent foes.
-      This move is a G MAX move and can only be used by G Max Pikachu.
-      G-max Volt Crash is available in the generation 8 games.</speak>
+      In battles with multiple Pokémon on each side it will have an effect on all
+      adjacent foes. This move is a G MAX move and can only be used by
+      G Max Pikachu. G-max Volt Crash is available in the generation 8 games.</speak>
   `);
   });
 });

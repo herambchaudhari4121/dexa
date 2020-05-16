@@ -1,9 +1,8 @@
 import { toTitleCase } from '@klasa/utils';
 import { app as AlexaApp, request as Request, response as Response } from 'alexa-app';
-import ApolloClient, { ApolloQueryResult } from 'apollo-boost';
+import ApolloClient, { ApolloQueryResult, InMemoryCache } from 'apollo-boost';
 import removeDiacritics from 'confusables';
 import 'cross-fetch/polyfill';
-import gql from 'graphql-tag';
 import * as c from './constants';
 
 const enum SLOTS {
@@ -29,7 +28,8 @@ export default class extends AlexaApp {
   public constructor() {
     super('dexa');
     this.apollo = new ApolloClient({
-      uri: this.DEV ? 'http://localhost:4000' : 'https://favware.tech/api'
+      uri: this.DEV ? 'http://localhost:4000' : 'https://favware.tech/api',
+      cache: new InMemoryCache()
     });
     this.init();
   }
@@ -102,9 +102,8 @@ export default class extends AlexaApp {
     try {
       const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getPokemonDetailsByFuzzy'>> = await this.apollo.query(
         {
-          query: gql`
-            ${c.getPokemonDetailsByFuzzy(pokemon)}
-          `
+          query: c.getPokemonDetailsByFuzzy,
+          variables: { pokemon }
         }
       );
       const { getPokemonDetailsByFuzzy: pokeData } = data;
@@ -132,7 +131,7 @@ export default class extends AlexaApp {
           content: text
         })
         .shouldEndSession(false);
-    } catch {
+    } catch (err) {
       return this.throwQueryErr(res, req, SLOTS.POKEMON);
     }
   }
@@ -140,9 +139,8 @@ export default class extends AlexaApp {
   public async MoveIntent(res: Response, req: Request, move: string) {
     try {
       const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getMoveDetailsByFuzzy'>> = await this.apollo.query({
-        query: gql`
-          ${c.getMoveDetailsByFuzzy(move)}
-        `
+        query: c.getMoveDetailsByFuzzy,
+        variables: { move }
       });
       const { getMoveDetailsByFuzzy: moveData } = data;
       const titleCaseName = toTitleCase(moveData.name);
@@ -178,9 +176,8 @@ export default class extends AlexaApp {
   private async ItemIntent(res: Response, req: Request, item: string) {
     try {
       const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getItemDetailsByFuzzy'>> = await this.apollo.query({
-        query: gql`
-          ${c.getItemDetailsByFuzzy(item)}
-        `
+        query: c.getItemDetailsByFuzzy,
+        variables: { item }
       });
       const { getItemDetailsByFuzzy: itemData } = data;
       const titleCaseName = toTitleCase(itemData.name);
@@ -210,9 +207,8 @@ export default class extends AlexaApp {
     try {
       const { data }: ApolloQueryResult<c.GraphQLPokemonResponse<'getAbilityDetailsByFuzzy'>> = await this.apollo.query(
         {
-          query: gql`
-            ${c.getAbilityDetailsByFuzzy(ability)}
-          `
+          query: c.getAbilityDetailsByFuzzy,
+          variables: { ability }
         }
       );
       const { getAbilityDetailsByFuzzy: abilityData } = data;
@@ -283,10 +279,7 @@ export default class extends AlexaApp {
           'If you want to start browsing you can request something now.'
         ].join('\n');
 
-        res
-          .say(helpOutput)
-          .reprompt('I did not quite catch that, could you repeat it?')
-          .shouldEndSession(false);
+        res.say(helpOutput).reprompt('I did not quite catch that, could you repeat it?').shouldEndSession(false);
       }
     );
   }
@@ -331,10 +324,7 @@ export default class extends AlexaApp {
 
       const reprompt = 'I did not quite catch that, could you repeat it?';
 
-      res
-        .say(prompt)
-        .reprompt(reprompt)
-        .shouldEndSession(false);
+      res.say(prompt).reprompt(reprompt).shouldEndSession(false);
     });
   }
 
@@ -357,9 +347,6 @@ export default class extends AlexaApp {
       'Maybe try again, or respond with "Alexa Cancel" if you want to stop.'
     ].join(' ');
 
-    return res
-      .say(prompt)
-      .reprompt(prompt)
-      .shouldEndSession(false);
+    return res.say(prompt).reprompt(prompt).shouldEndSession(false);
   }
 }

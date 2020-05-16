@@ -1,58 +1,92 @@
-/* eslint-disable no-useless-escape */
-import { Abilities, DexDetails, GenderEntry, Items, MoveEntry, Moves, Pokemon, Query } from '@favware/graphql-pokemon';
+import { DexDetails, GenderEntry, MoveEntry, Query } from '@favware/graphql-pokemon';
 import { toTitleCase } from '@klasa/utils';
+import gql from 'graphql-tag';
 
-const AbilityFragment = `
-fragment ability on AbilityEntry {
+export const getPokemonDetailsByFuzzy = gql`
+  fragment evolutionsData on DexDetails {
+    species
+    evolutionLevel
+  }
+
+  fragment dexdetails on DexDetails {
+    num
+    species
+    types
+    evolutionLevel
+    height
+    weight
+    sprite
+    smogonTier
+    flavorTexts {
+      flavor
+    }
+    gender {
+      male
+      female
+    }
+    abilities {
+      first
+      second
+      hidden
+      special
+    }
+  }
+
+  fragment evolutions on DexDetails {
+    evolutions {
+      ...evolutionsData
+      evolutions {
+        ...evolutionsData
+      }
+    }
+    preevolutions {
+      ...evolutionsData
+      preevolutions {
+        ...evolutionsData
+      }
+    }
+  }
+
+  query pokemonDetails($pokemon: String!) {
+    getPokemonDetailsByFuzzy(pokemon: $pokemon, skip: 0, take: 1, reverse: true) {
+      ...dexdetails
+      ...evolutions
+    }
+  }
+`;
+
+export const getAbilityDetailsByFuzzy = gql`
+  fragment ability on AbilityEntry {
     desc
     shortDesc
     name
-}`;
+  }
 
-const DexDetailsFragment = `
-fragment dexdetails on DexDetails {
-  num
-  species
-  types
-  evolutionLevel
-  height
-  weight
-  sprite
-  smogonTier
-  flavorTexts { flavor }
-  gender { male female }
-  abilities { first second hidden special }
-}`;
+  query abilityDetails($ability: String!) {
+    getAbilityDetailsByFuzzy(ability: $ability, skip: 0, take: 1) {
+      ...ability
+    }
+  }
+`;
 
-const EvolutionsFragment = `
-${DexDetailsFragment}
-
-fragment evolutions on DexDetails {
-    evolutions {
-        ...dexdetails
-        evolutions {
-          ...dexdetails
-        }
-      }
-      preevolutions {
-        ...dexdetails
-        preevolutions {
-          ...dexdetails
-        }
-      }
-}`;
-
-const ItemsFragment = `
-fragment items on ItemEntry {
+export const getItemDetailsByFuzzy = gql`
+  fragment items on ItemEntry {
     desc
     name
     sprite
     isNonstandard
     generationIntroduced
-}`;
+  }
 
-const MoveFragment = `
-fragment moves on MoveEntry {
+  query itemDetails($item: String!) {
+    getItemDetailsByFuzzy(item: $item, skip: 0, take: 1) {
+      ...items
+    }
+  }
+`;
+
+export const getMoveDetailsByFuzzy = gql`
+  fragment moves on MoveEntry {
     name
     shortDesc
     type
@@ -67,50 +101,22 @@ fragment moves on MoveEntry {
     isZ
     isGMax
     desc
-}`;
+  }
 
-export const getPokemonDetailsByFuzzy = (pokemon: string | Pokemon) => `
-${EvolutionsFragment}
-
-{
-    getPokemonDetailsByFuzzy(pokemon: \"${pokemon}\" skip: 0 take: 1 reverse: true) {
-        ...dexdetails
-        ...evolutions
+  query moveDetails($move: String!) {
+    getMoveDetailsByFuzzy(move: $move, skip: 0, take: 1) {
+      ...moves
     }
-}`;
-
-export const getAbilityDetailsByFuzzy = (ability: string | Abilities) => `
-${AbilityFragment}
-
-{
-    getAbilityDetailsByFuzzy(ability: \"${ability}\" skip: 0 take: 1) {
-      ...ability
-    }
-}`;
-
-export const getItemDetailsByFuzzy = (items: string | Items) => `
-${ItemsFragment}
-
-{
-    getItemDetailsByFuzzy(item: \"${items}\" skip: 0 take: 1) {
-        ...items
-    }
-}`;
-
-export const getMoveDetailsByFuzzy = (move: string | Moves) => `
-${MoveFragment}
-
-{
-    getMoveDetailsByFuzzy(move: \"${move}\" skip: 0 take: 1) {
-        ...moves
-    }
-}`;
+  }
+`;
 
 export const parsePrevos = (data: DexDetails) => {
   const prevos: string[] = [];
   const hasEvoByLevel = (evolutionMethod: string | null | undefined) => Number(evolutionMethod);
 
-  data.preevolutions!.forEach(pr => {
+  if (!data.preevolutions) return prevos;
+
+  data.preevolutions.forEach((pr) => {
     prevos.push(
       [
         `${toTitleCase(pr.species)}`,
@@ -123,7 +129,7 @@ export const parsePrevos = (data: DexDetails) => {
     );
 
     if (pr.preevolutions) {
-      pr.preevolutions.forEach(prr => {
+      pr.preevolutions.forEach((prr) => {
         prevos.push(
           [
             `${toTitleCase(prr.species)}`,
@@ -145,7 +151,9 @@ export const parseEvos = (data: DexDetails) => {
   const evos: string[] = [];
   const hasEvoByLevel = (evolutionMethod: string | null | undefined) => Number(evolutionMethod);
 
-  data.evolutions!.forEach(evo => {
+  if (!data.evolutions) return evos;
+
+  data.evolutions.forEach((evo) => {
     evos.push(
       [
         `${toTitleCase(evo.species)}`,
@@ -158,7 +166,7 @@ export const parseEvos = (data: DexDetails) => {
     );
 
     if (evo.evolutions) {
-      evo.evolutions.forEach(evvo => {
+      evo.evolutions.forEach((evvo) => {
         evos.push(
           [
             `${toTitleCase(evvo.species)}`,
@@ -227,4 +235,3 @@ export const parseMoveTarget = (target: MoveEntry['target']) => {
 };
 
 export type GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> = Record<K, Omit<Query[K], '__typename'>>;
-export type GraphQLQueryReturnTypes = keyof Omit<Query, '__typename'>;
