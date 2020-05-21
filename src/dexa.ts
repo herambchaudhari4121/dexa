@@ -7,9 +7,9 @@ import {
 } from '@favware/graphql-pokemon';
 import { toTitleCase } from '@klasa/utils';
 import { app as AlexaApp, request as Request, response as Response } from 'alexa-app';
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import ApolloClient from 'apollo-boost';
 import removeDiacritics from 'confusables';
-import 'cross-fetch/polyfill';
+import fetch from 'cross-fetch';
 import * as c from './constants';
 
 type GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> = Record<K, Omit<Query[K], '__typename'>>;
@@ -38,7 +38,8 @@ export default class extends AlexaApp {
     super('dexa');
     this.apollo = new ApolloClient({
       uri: this.DEV ? 'http://localhost:4000' : 'https://favware.tech/api',
-      cache: new InMemoryCache()
+      fetchOptions: { headers: { 'User-Agent': 'Favware/Dexa <Alexa API service>' } },
+      fetch
     });
     this.init();
   }
