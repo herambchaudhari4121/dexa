@@ -32,3 +32,23 @@ Dexa is a skill for Amazon Alexa to easily find data from in the Pokédex. You c
 - Creators of [Alexa-App](https://github.com/alexa-js/alexa-app) for the framework
 
 - [dblock](https://github.com/dblock/alexa-parrot) for creating the alexa-app tutorial that got me started
+
+## License
+
+Copyright © 2019, [Favware](https://github.com/favware).
+Released under the [MIT License](LICENSE).
+
+## Buy us a donut
+
+Favware projects are open source and always will be, even if there are no donations. That said, we also know there are people out there that may still want to donate just to show their appreciation so this is for you guys. Thanks in advance!
+
+You can contribute in a multitude of ways:
+
+- [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMAYCF9SDHZ34)
+- [Patreon](https://www.patreon.com/favna)
+- [Ko-Fi](https://ko-fi.com/favna)
+- [GitHub Sponsors Favware](https://github.com/sponsors/favware)
+- [GitHub Sponsors Favna](https://github.com/sponsors/Favna)
+- Bitcoin: `1E643TNif2MTh75rugepmXuq35Tck4TnE5`
+- Ethereum: `0xF653F666903cd8739030D2721bF01095896F5D6E`
+- LiteCoin: `LZHvBkaJqKJRa8N7Dyu41Jd1PDBAofCik6`
