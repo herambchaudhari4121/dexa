@@ -20,7 +20,7 @@
     "deploy:prep": "yarn scripts:prepareawsfunction",
     "deploy:install-packages": "cd dist && yarn --ignore-scripts --no-lockfile --production --ignore-optional --non-interactive --no-bin-links --link-duplicates",
     "deploy:zip": "cd dist && zip -rq function.zip .",
-    "deploy:push": "cd dist && aws2.exe lambda update-function-code --function-name alexa_dexa --zip-file fileb://function.zip",
+    "deploy:push": "cd dist && aws lambda update-function-code --function-name alexa_dexa --zip-file fileb://function.zip",
     "sversion": "standard-version",
     "scripts:runner": "ts-node -P tsconfig.eslint.json",
     "scripts:skilldatagenerator": "yarn scripts:runner scripts/skillDataGenerator",
