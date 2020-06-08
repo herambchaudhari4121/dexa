@@ -6,7 +6,7 @@ title: 'Fix(): '
 assignees: ''
 ---<!--
 If you need help with the library installation or usage, please go to the Discord server instead:
-  https://favware.tech/redirect/server
+  https://join.favware.tech
 This issue tracker is only for bug reports and enhancement suggestions.
 You likely won't receive any basic help here.
 -->
