@@ -297,8 +297,8 @@ describe('DexIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-    <speak>Sandshrew-alola, number 27, Its ice-covered body lets it slide across the ground with bullet-like speed,
-      sending its enemies flying when it hits them.
+    <speak>Sandshrew-alola, number 27, It lives in snowy mountains on southern islands.
+      When a blizzard rolls in, this Pokémon hunkers down in the snow to avoid getting blown away.
       It is Ice Steel type.
       It evolves into Sandslash-alola (Special Condition: use Icestone).
       Sandshrew-alola is typically 0.7 meters tall and weighs about 40 kilograms.
