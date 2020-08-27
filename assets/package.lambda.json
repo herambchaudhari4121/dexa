@@ -3,7 +3,7 @@
   "main": "index.js",
   "private": true,
   "dependencies": {
-    "@klasa/utils": "^0.0.4",
+    "@sapphire/utilities": "github:sapphire-project/utilities#build-utilities",
     "alexa-app": "^4",
     "apollo-boost": "^0.4.7",
     "confusables": "^1.0.0",

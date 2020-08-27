@@ -5,7 +5,7 @@ import {
   QueryGetMoveDetailsByFuzzyArgs,
   QueryGetPokemonDetailsByFuzzyArgs
 } from '@favware/graphql-pokemon';
-import { toTitleCase } from '@klasa/utils';
+import { toTitleCase } from '@sapphire/utilities';
 import { app as AlexaApp, request as Request, response as Response } from 'alexa-app';
 import ApolloClient from 'apollo-boost';
 import removeDiacritics from 'confusables';

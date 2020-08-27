@@ -1,5 +1,5 @@
 import { DexDetails, GenderEntry, MoveEntry } from '@favware/graphql-pokemon';
-import { toTitleCase } from '@klasa/utils';
+import { toTitleCase } from '@sapphire/utilities';
 import gql from 'graphql-tag';
 
 export const getPokemonDetailsByFuzzy = gql`
