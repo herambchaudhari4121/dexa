@@ -14,7 +14,7 @@
     "test": "jest",
     "build": "tsc -b src",
     "watch": "tsc -b src -w",
-    "up": "yarn upgrade-interactive --latest",
+    "update": "yarn upgrade-interactive --latest",
     "predeploy": "rimraf dist && yarn build",
     "deploy": "run-s deploy:prep deploy:install-packages deploy:zip deploy:push",
     "deploy:prep": "yarn scripts:prepareawsfunction",
@@ -36,7 +36,7 @@
     "graphql-tag": "^2.11.0"
   },
   "devDependencies": {
-    "@favware/eslint-config": "6.0.1",
+    "@favware/eslint-config": "6.0.2",
     "@favware/graphql-pokemon": "^4.4.0",
     "@favware/ts-config": "^3.0.4",
     "@playlyfe/gql": "^2.6.2",
