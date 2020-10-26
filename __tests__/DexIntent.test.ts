@@ -27,8 +27,8 @@ describe('DexIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-        <speak>Dragonite, number 149, It is said that this Pokémon lives somewhere in the sea and that it flies.
-        However, these are only rumors.
+        <speak>Dragonite, number 149, This Pokémon is known as the Sea Incarnate.
+        Figureheads that resemble Dragonite decorate the bows of many ships.
         It is Dragon Flying type.
         Its pre-evolutions are Dragonair (Level: 55) and Dratini (Level: 30).
         Dragonite is typically 2.2 meters tall and weighs about 210 kilograms.
@@ -99,8 +99,8 @@ describe('DexIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-      <speak>Dragonair, number 148, According to a witness, its body was surrounded by a strange aura that gave it a
-      mystical look.
+      <speak>Dragonair, number 148, This Pokémon gathers power in the orbs on its tail and controls the weather.
+      When enshrouded by an aura, Dragonair has a mystical appearance.
       It is Dragon type.
       Its pre-evolution is Dratini (Level: 30).
       It evolves into Dragonite (Level: 55).
@@ -133,8 +133,8 @@ describe('DexIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-      <speak>Dratini, number 147, Long thought to be a myth, this Pokémon's existence was only recently confirmed by a
-      fisherman who caught one.
+      <speak>Dratini, number 147, This Pokémon was long considered to be no more than a myth.
+      The small lump on a Dratini’s forehead is actually a horn that’s still coming in.
       It is Dragon type.
       It evolves into Dragonair (Level: 30) and Dragonite (Level: 55).
       Dratini is typically 1.8 meters tall and weighs about 3.3 kilograms.
@@ -198,8 +198,8 @@ describe('DexIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-      <speak>Metagross, number 376, It analyzes its opponents with more accuracy than a supercomputer,
-      which enables it to calmly back them into a corner.
+      <speak>Metagross, number 376, Metagross is the result of the fusion of two Metang.
+      This Pokémon defeats its opponents through use of its supercomputer-level brain.
       It is Steel Psychic type.
       Its pre-evolutions are
       Metang (Level: 45) and
