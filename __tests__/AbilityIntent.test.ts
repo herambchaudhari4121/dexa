@@ -27,7 +27,7 @@ describe('AbilityIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-    <speak>Multiscale, If this Pokemon is at full HP, damage taken from attacks is halved.</speak>
+    <speak>Multiscale, If this Pokémon is at full HP, damage taken from attacks is halved.</speak>
   `);
   });
 });

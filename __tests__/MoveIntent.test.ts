@@ -191,14 +191,14 @@ describe('MoveIntent', () => {
 
     expect(res.status).toBe(200);
     expect(ssml).toBe(oneLine`
-      <speak>G-max Volt Crash, Power is equal to the base move's Max Move power.
-      If this move is successful, each Pokemon on the opposing side becomes paralyzed,
-      even if they have a substitute. G-max Volt Crash is an Electric type move.
-      G-max Volt Crash has a base power of 10 and it has 10 pp.
-      Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
-      In battles with multiple Pokémon on each side it will have an effect on all
-      adjacent foes. This move is a G MAX move and can only be used by
-      G Max Pikachu. G-max Volt Crash is available in the generation 8 games.</speak>
+    <speak>G-max Volt Crash, Power is equal to the base move's Max Move power.
+    If this move is successful, each Pokémon on the opposing side becomes paralyzed,
+    even if they have a substitute. G-max Volt Crash is an Electric type move.
+    G-max Volt Crash has a base power of 10 and it has 10 pp.
+    Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
+    In battles with multiple Pokémon on each side it will have an effect on all adjacent foes.
+    This move is a G MAX move and can only be used by G Max Pikachu.
+    G-max Volt Crash is available in the generation 8 games.</speak>
   `);
   });
 });
