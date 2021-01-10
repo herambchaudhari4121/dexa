@@ -65,8 +65,8 @@ describe('DexIntent', () => {
           Vaporeon (Special Condition: use Water Stone) and
           Jolteon (Special Condition: use Thunder Stone) and
           Flareon (Special Condition: use Fire Stone) and
-          Espeon (Special Condition: Level up during Daytime with High Friendship) and
-          Umbreon (Special Condition: Level up during Nighttime with High Friendship) and
+          Espeon (Special Condition: Level up during Daytime with happiness of at least 220) and
+          Umbreon (Special Condition: Level up during Nighttime with happiness of at least 220) and
           Leafeon (Special Condition: use Leaf Stone) and
           Glaceon (Special Condition: use Ice Stone) and
           Sylveon (Special Condition: Level up while having high Affection and knowing a Fairy type move).
@@ -365,7 +365,7 @@ describe('DexIntent', () => {
     <speak>Raichu-alola, number 26, This Pokémon rides on its tail while it uses its psychic powers to levitate.
     It attacks with star-shaped thunderbolts.
     It is Electric Psychic type.
-    Its pre-evolutions are Pikachu (Special Condition: use Thunder Stone) and Pichu (Special Condition: Level up with High Friendship).
+    Its pre-evolutions are Pikachu (Special Condition: use Thunder Stone) and Pichu (Special Condition: Level up with happiness of at least 220).
     Raichu-alola is typically 0.7 meters tall and weighs about 21 kilograms.
     It has a gender ratio of 50% male and 50% female.</speak>
   `);
