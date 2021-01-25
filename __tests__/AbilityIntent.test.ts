@@ -1,6 +1,5 @@
-import { oneLine } from 'common-tags';
 import fetch from 'supertest';
-import { SERVER } from './utils';
+import { oneLine, SERVER } from './utils';
 
 describe('AbilityIntent', () => {
   test('GIVEN Ability THEN returns data', async () => {
@@ -26,8 +25,6 @@ describe('AbilityIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
-    <speak>Multiscale, If this Pokémon is at full HP, damage taken from attacks is halved.</speak>
-  `);
+    expect(ssml).toBe(oneLine('<speak>Multiscale, If this Pokémon is at full HP, damage taken from attacks is halved.</speak>'));
   });
 });

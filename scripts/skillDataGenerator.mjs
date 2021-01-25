@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import Dexa from '../src/dexa';
+import Dexa from '../dist/dexa.js';
 
-const dexa = new Dexa();
+const dexa = new Dexa.default();
 
 console.group('Skill Data');
 console.log('\nIntent Schema\n');

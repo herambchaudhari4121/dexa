@@ -1,0 +1,8 @@
+version: '2.4'
+services:
+  pokedex:
+    container_name: pokedex
+    image: favware/graphql-pokemon:main
+    restart: 'no'
+    ports:
+      - '4000:8080'

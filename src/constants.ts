@@ -1,4 +1,4 @@
-import { DexDetails, GenderEntry, MoveEntry } from '@favware/graphql-pokemon';
+import type { DexDetails, GenderEntry, MoveEntry } from '@favware/graphql-pokemon';
 import { toTitleCase } from '@sapphire/utilities';
 import gql from 'graphql-tag';
 

@@ -1,7 +1,7 @@
 {
-  "extends": "@favware/ts-config",
+  "extends": "@sapphire/ts-config",
   "compilerOptions": {
-    "module": "CommonJS",
+    "target": "ES2018",
     "declarationMap": false,
     "sourceMap": false,
     "removeComments": true

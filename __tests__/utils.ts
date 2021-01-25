@@ -1,6 +1,8 @@
-import { Server } from 'http';
+import type { Server } from 'http';
 import express from 'express';
 import Dexa from '../src/dexa';
+
+export const oneLine = (input: string): string => input.replace(/(?:\n(?:\s*))+/g, ' ').trim();
 
 export let SERVER: Server | null = null;
 

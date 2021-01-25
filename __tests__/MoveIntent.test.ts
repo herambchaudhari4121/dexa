@@ -1,6 +1,5 @@
-import { oneLine } from 'common-tags';
 import fetch from 'supertest';
-import { SERVER } from './utils';
+import { oneLine, SERVER } from './utils';
 
 describe('MoveIntent', () => {
   test('GIVEN Normal move THEN returns regular data', async () => {
@@ -26,14 +25,16 @@ describe('MoveIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
       <speak>Dragon Claw, No additional effect.
         Dragon Claw is a Dragon type move.
         Dragon Claw has a base power of 80 and it has 15 pp.
         Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
         In battles with multiple Pokémon on each side it will have an effect on regular targets.
         Dragon Claw is available in the generation 8 games.</speak>
-  `);
+  `)
+    );
   });
 
   test('GIVEN Status move THEN returns move without base power', async () => {
@@ -59,14 +60,16 @@ describe('MoveIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
     <speak>Dragon Dance, Raises the user's Attack and Speed by 1 stage.
       Dragon Dance is a Dragon type move.
       Dragon Dance is a status move and it has 20 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on the user.
       Dragon Dance is available in the generation 8 games.</speak>
-  `);
+  `)
+    );
   });
 
   test('GIVEN special base power move THEN returns special calculated basepower', async () => {
@@ -92,14 +95,16 @@ describe('MoveIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
     <speak>Pika Papow, Max happiness: 102 power.
       Can\'t miss. Pika Papow is an Electric type move.
       Pika Papow base power is calculated based on (happiness * 10) / 25 and it has 20 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on regular targets.
       Pika Papow is available in the generation 8 games.</speak>
-  `);
+  `)
+    );
   });
 
   test('GIVEN move with base power 0 THEN returns has 0 base power', async () => {
@@ -125,13 +130,15 @@ describe('MoveIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
     <speak>Return, Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1.
       Return is a Normal type move.
       Return has a base power of 0 and it has 20 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on regular targets.</speak>
-  `);
+  `)
+    );
   });
 
   test('GIVEN Z-Move THEN returns Z-Crystal', async () => {
@@ -157,14 +164,16 @@ describe('MoveIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
     <speak>Catastropika, No additional effect.
       Catastropika is an Electric type move.
       Catastropika has a base power of 210 and it has 1 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on regular targets.
       This move is a Z Move and requires the Z-Crystal Pikanium Z.</speak>
-  `);
+  `)
+    );
   });
 
   test('GIVEN GMAX-Move THEN returns Pokémon that can use this move', async () => {
@@ -190,7 +199,8 @@ describe('MoveIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
     <speak>G-max Volt Crash, Power is equal to the base move's Max Move power.
     If this move is successful, each Pokémon on the opposing side becomes paralyzed,
     even if they have a substitute. G-max Volt Crash is an Electric type move.
@@ -199,6 +209,7 @@ describe('MoveIntent', () => {
     In battles with multiple Pokémon on each side it will have an effect on all adjacent foes.
     This move is a G MAX move and can only be used by G Max Pikachu.
     G-max Volt Crash is available in the generation 8 games.</speak>
-  `);
+  `)
+    );
   });
 });

@@ -1,6 +1,5 @@
-import { oneLine } from 'common-tags';
 import fetch from 'supertest';
-import { SERVER } from './utils';
+import { oneLine, SERVER } from './utils';
 
 describe('ItemIntent', () => {
   test('GIVEN Item in Generation 8 THEN returns data', async () => {
@@ -26,11 +25,13 @@ describe('ItemIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
     <speak>Life Orb, Holder's attacks do 1.3 times damage, and it loses 1/10 its max HP after the attack.
       It was introduced in generation 4.
       Life Orb is available in Generation 8.</speak>
-  `);
+  `)
+    );
   });
 
   test('GIVEN Item not in Generation 8 THEN returns data', async () => {
@@ -56,10 +57,12 @@ describe('ItemIntent', () => {
     const { ssml } = res.body.response.outputSpeech;
 
     expect(res.status).toBe(200);
-    expect(ssml).toBe(oneLine`
+    expect(ssml).toBe(
+      oneLine(`
     <speak>Pikashunium Z, If held by cap Pikachu with Thunderbolt, it can use 10,000,000 Volt Thunderbolt.
       It was introduced in generation 7.
       Pikashunium Z is not available in Generation 8.</speak>
-  `);
+  `)
+    );
   });
 });
