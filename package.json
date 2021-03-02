@@ -23,7 +23,7 @@
     "prescripts:skilldatagenerator": "yarn build",
     "scripts:skilldatagenerator": "node scripts/skillDataGenerator.mjs",
     "scripts:prepareawsfunction": "node scripts/prepareAwsFunction.mjs",
-    "postinstall": "husky install .github/husky"
+    "prepare": "husky install .github/husky"
   },
   "dependencies": {
     "@sapphire/utilities": "^1.4.5",
