@@ -1,5 +1,10 @@
 {
   "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true
+  },
   "references": [
     {
       "path": "../src"
