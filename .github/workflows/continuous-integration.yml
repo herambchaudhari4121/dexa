@@ -63,6 +63,17 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(needs.pre_ci.outputs.commit_message, '[skip ci]')"
     needs: pre_ci
+    services:
+      pokedex:
+        image: ghcr.io/favware/graphql-pokemon:latest
+        options: >-
+          --health-cmd "nc -z localhost 4000"
+          --health-interval 10s
+          --health-timeout 10s
+          --health-retries 6
+          --health-start-period 5s
+        ports:
+          - 4000:4000
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
@@ -84,10 +95,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run graphql-pokemon and tests
-        run: |
-          docker container run --name graphql-pokemon -d --expose 8080 -p 4000:8080 -it favware/graphql-pokemon:latest \
-          && sleep 5 \
-          && yarn test
+        run: yarn test
 
   Building:
     name: Compiling TypeScript
