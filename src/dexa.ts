@@ -1,9 +1,9 @@
 import type {
   Query,
-  QueryGetAbilityDetailsByFuzzyArgs,
-  QueryGetItemDetailsByFuzzyArgs,
-  QueryGetMoveDetailsByFuzzyArgs,
-  QueryGetPokemonDetailsByFuzzyArgs
+  QueryGetFuzzyAbilityArgs,
+  QueryGetFuzzyItemArgs,
+  QueryGetFuzzyMoveArgs,
+  QueryGetFuzzyPokemonArgs
 } from '@favware/graphql-pokemon';
 import { toTitleCase } from '@sapphire/utilities';
 import { app as AlexaApp, request as Request, response as Response } from 'alexa-app';
@@ -106,11 +106,13 @@ export default class extends AlexaApp {
 
   public async DexIntent(res: Response, req: Request, pokemon: string) {
     try {
-      const { data } = await this.apollo.query<GraphQLPokemonResponse<'getPokemonDetailsByFuzzy'>, QueryGetPokemonDetailsByFuzzyArgs>({
-        query: c.getPokemonDetailsByFuzzy,
+      const {
+        data: { getFuzzyPokemon: result }
+      } = await this.apollo.query<GraphQLPokemonResponse<'getFuzzyPokemon'>, QueryGetFuzzyPokemonArgs>({
+        query: c.getFuzzyPokemon,
         variables: { pokemon }
       });
-      const { getPokemonDetailsByFuzzy: pokeData } = data;
+      const pokeData = result[0];
       const titleCaseName = toTitleCase(pokeData.species);
 
       const prevos = c.parsePrevos(pokeData);
@@ -142,11 +144,14 @@ export default class extends AlexaApp {
 
   public async MoveIntent(res: Response, req: Request, move: string) {
     try {
-      const { data } = await this.apollo.query<GraphQLPokemonResponse<'getMoveDetailsByFuzzy'>, QueryGetMoveDetailsByFuzzyArgs>({
-        query: c.getMoveDetailsByFuzzy,
+      const {
+        data: { getFuzzyMove: result }
+      } = await this.apollo.query<GraphQLPokemonResponse<'getFuzzyMove'>, QueryGetFuzzyMoveArgs>({
+        query: c.getFuzzyMove,
         variables: { move }
       });
-      const { getMoveDetailsByFuzzy: moveData } = data;
+
+      const moveData = result[0];
       const titleCaseName = toTitleCase(moveData.name);
 
       const text = [
@@ -177,11 +182,13 @@ export default class extends AlexaApp {
 
   private async ItemIntent(res: Response, req: Request, item: string) {
     try {
-      const { data } = await this.apollo.query<GraphQLPokemonResponse<'getItemDetailsByFuzzy'>, QueryGetItemDetailsByFuzzyArgs>({
-        query: c.getItemDetailsByFuzzy,
+      const {
+        data: { getFuzzyItem: result }
+      } = await this.apollo.query<GraphQLPokemonResponse<'getFuzzyItem'>, QueryGetFuzzyItemArgs>({
+        query: c.getFuzzyItem,
         variables: { item }
       });
-      const { getItemDetailsByFuzzy: itemData } = data;
+      const itemData = result[0];
       const titleCaseName = toTitleCase(itemData.name);
 
       const text = [
@@ -207,11 +214,13 @@ export default class extends AlexaApp {
 
   private async AbilityIntent(res: Response, req: Request, ability: string) {
     try {
-      const { data } = await this.apollo.query<GraphQLPokemonResponse<'getAbilityDetailsByFuzzy'>, QueryGetAbilityDetailsByFuzzyArgs>({
-        query: c.getAbilityDetailsByFuzzy,
+      const {
+        data: { getFuzzyAbility: result }
+      } = await this.apollo.query<GraphQLPokemonResponse<'getFuzzyAbility'>, QueryGetFuzzyAbilityArgs>({
+        query: c.getFuzzyAbility,
         variables: { ability }
       });
-      const { getAbilityDetailsByFuzzy: abilityData } = data;
+      const abilityData = result[0];
       const titleCaseName = toTitleCase(abilityData.name);
 
       const text = `${titleCaseName}, ${abilityData.desc || abilityData.shortDesc}`;

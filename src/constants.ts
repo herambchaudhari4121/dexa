@@ -1,14 +1,14 @@
-import type { DexDetails, GenderEntry, MoveEntry } from '@favware/graphql-pokemon';
+import type { Gender, Move, Pokemon } from '@favware/graphql-pokemon';
 import { toTitleCase } from '@sapphire/utilities';
 import gql from 'graphql-tag';
 
-export const getPokemonDetailsByFuzzy = gql`
-  fragment evolutionsData on DexDetails {
+export const getFuzzyPokemon = gql`
+  fragment evolutionsData on Pokemon {
     species
     evolutionLevel
   }
 
-  fragment dexdetails on DexDetails {
+  fragment dexdetails on Pokemon {
     num
     species
     types
@@ -32,7 +32,7 @@ export const getPokemonDetailsByFuzzy = gql`
     }
   }
 
-  fragment evolutions on DexDetails {
+  fragment evolutions on Pokemon {
     evolutions {
       ...evolutionsData
       evolutions {
@@ -47,70 +47,58 @@ export const getPokemonDetailsByFuzzy = gql`
     }
   }
 
-  query pokemonDetails($pokemon: String!) {
-    getPokemonDetailsByFuzzy(pokemon: $pokemon, skip: 0, take: 1, reverse: true) {
+  query getFuzzyPokemon($pokemon: String!) {
+    getFuzzyPokemon(pokemon: $pokemon) {
       ...dexdetails
       ...evolutions
     }
   }
 `;
 
-export const getAbilityDetailsByFuzzy = gql`
-  fragment ability on AbilityEntry {
-    desc
-    shortDesc
-    name
-  }
-
-  query abilityDetails($ability: String!) {
-    getAbilityDetailsByFuzzy(ability: $ability, skip: 0, take: 1) {
-      ...ability
+export const getFuzzyAbility = gql`
+  query getFuzzyAbility($ability: String!) {
+    getFuzzyAbility(ability: $ability) {
+      desc
+      shortDesc
+      name
     }
   }
 `;
 
-export const getItemDetailsByFuzzy = gql`
-  fragment items on ItemEntry {
-    desc
-    name
-    sprite
-    isNonstandard
-    generationIntroduced
-  }
-
-  query itemDetails($item: String!) {
-    getItemDetailsByFuzzy(item: $item, skip: 0, take: 1) {
-      ...items
+export const getFuzzyItem = gql`
+  query getFuzzyItem($item: String!) {
+    getFuzzyItem(item: $item) {
+      desc
+      name
+      sprite
+      isNonstandard
+      generationIntroduced
     }
   }
 `;
 
-export const getMoveDetailsByFuzzy = gql`
-  fragment moves on MoveEntry {
-    name
-    shortDesc
-    type
-    basePower
-    pp
-    category
-    accuracy
-    priority
-    target
-    contestType
-    isNonstandard
-    isZ
-    isGMax
-    desc
-  }
-
-  query moveDetails($move: String!) {
-    getMoveDetailsByFuzzy(move: $move, skip: 0, take: 1) {
-      ...moves
+export const getFuzzyMove = gql`
+  query getFuzzyMove($move: String!) {
+    getFuzzyMove(move: $move) {
+      name
+      shortDesc
+      type
+      basePower
+      pp
+      category
+      accuracy
+      priority
+      target
+      contestType
+      isNonstandard
+      isZ
+      isGMax
+      desc
     }
   }
 `;
 
-export const parsePrevos = (data: DexDetails) => {
+export const parsePrevos = (data: Pokemon) => {
   const prevos: string[] = [];
   const hasEvoByLevel = (evolutionMethod: string | null | undefined) => Number(evolutionMethod);
 
@@ -139,7 +127,7 @@ export const parsePrevos = (data: DexDetails) => {
   return prevos;
 };
 
-export const parseEvos = (data: DexDetails) => {
+export const parseEvos = (data: Pokemon) => {
   const evos: string[] = [];
   const hasEvoByLevel = (evolutionMethod: string | null | undefined) => Number(evolutionMethod);
 
@@ -168,7 +156,7 @@ export const parseEvos = (data: DexDetails) => {
   return evos;
 };
 
-export const parseGenderRatio = (genderRatio: GenderEntry) => {
+export const parseGenderRatio = (genderRatio: Gender) => {
   if (genderRatio.male === '0%' && genderRatio.female === '0%') {
     return 'It is genderless';
   }
@@ -176,7 +164,7 @@ export const parseGenderRatio = (genderRatio: GenderEntry) => {
   return `It has a gender ratio of ${genderRatio.male} male and ${genderRatio.female} female`;
 };
 
-export const parseMoveBasePower = (basePower: MoveEntry['basePower'], category: MoveEntry['category']) => {
+export const parseMoveBasePower = (basePower: Move['basePower'], category: Move['category']) => {
   if (category === 'Status') return 'is a status move';
 
   const basePowerNumber = Number(basePower);
@@ -187,7 +175,7 @@ export const parseMoveBasePower = (basePower: MoveEntry['basePower'], category: 
   return `base power is calculated based on ${basePower}`;
 };
 
-export const parseMoveTarget = (target: MoveEntry['target']) => {
+export const parseMoveTarget = (target: Move['target']) => {
   switch (target) {
     case 'Adjacent Ally':
       return 'the directly adjacent ally';

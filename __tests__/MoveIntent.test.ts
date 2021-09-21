@@ -134,7 +134,7 @@ describe('MoveIntent', () => {
       oneLine(`
     <speak>Return, Power is equal to the greater of (user's Happiness * 2/5), rounded down, or 1.
       Return is a Normal type move.
-      Return has a base power of 0 and it has 20 pp.
+      Return base power is calculated based on (user's Happiness * 2/5) and it has 20 pp.
       Under normal conditions this move will have a priority of 0 and an accuracy of 100%.
       In battles with multiple Pokémon on each side it will have an effect on regular targets.</speak>
   `)

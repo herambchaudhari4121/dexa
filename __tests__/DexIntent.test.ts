@@ -140,7 +140,7 @@ describe('DexIntent', () => {
     expect(ssml).toBe(
       oneLine(`
       <speak>Dratini, number 147, This Pokémon was long considered to be no more than a myth.
-      The small lump on a Dratini’s forehead is actually a horn that’s still coming in.
+      The small lump on a Dratini's forehead is actually a horn that's still coming in.
       It is Dragon type.
       It evolves into Dragonair (Level: 30) and Dragonite (Level: 55).
       Dratini is typically 1.8 meters tall and weighs about 3.3 kilograms.
