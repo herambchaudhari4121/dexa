@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 - build was broken, now fixed ([71911f7](https://github.com/favware/dexa/commit/71911f7e2134d75af5b4d90e65c3ab48ba544d10))
-- fixed typo generaton -> generation ([379e2e0](https://github.com/favware/dexa/commit/379e2e05876f2dfa613c4317853495eb26fa0186))
+- fixed type of generaton -> generation ([379e2e0](https://github.com/favware/dexa/commit/379e2e05876f2dfa613c4317853495eb26fa0186))
 - multiple bugfixes, details in description ([73ef48b](https://github.com/favware/dexa/commit/73ef48bccfb5751d7b67d59c221ee4150c8719bc))
 
 ### [2.0.2](https://github.com/favware/dexa/compare/v2.0.1...v2.0.2) (2020-01-05)
